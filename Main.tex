@@ -23,7 +23,7 @@
 \usepackage{lineno}
 \usepackage{layout}
 \usepackage{lipsum}
-\usepackage{bm, amsmath, comment, color, soul, cite}
+\usepackage{bm, amsmath, comment, color, soul, cite, siunitx}
 \linenumbers
 
 \begin{document}
@@ -42,11 +42,7 @@
 %% [use \begin{abstract*}...\end{abstract*} if exempt from copyright]
 
 \begin{abstract}
-\LaTeX{} manuscripts submitted to Optica Publishing Group journals may use these instructions and this universal template format.
-The template simplifies manuscript preparation and eases transfer between journals.
-\emph{Applied Optics}, JOSA A, JOSA B, \emph{Journal of Optical Communications and Networking}, and \emph{Photonics Research} authors should use the length-check template if a precise length estimate is needed.
-\emph{Optics Letters} authors and authors of short \emph{Optica} articles are encouraged to use the length-check template.
-Authors using this universal template will still need to adhere to article-length restrictions based on the final, published format.
+not yet
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  body  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,9 +53,12 @@ not yet
 \subsection{976\,nm amplifier system}
 
 A schematic of the fiber amplifier system is shown in Fig.~\ref{fig:1}.
-An external-cavity laser diode(ECLD) at $976\,\mathrm{nm}$ is used for a seed laser.
-The seed laser is pre-amplified by tapered amplifier from $30\,\mathrm{mW}$ to $900\,\mathrm{mW}$, and coupled to YDFA input fiber.
-aaaabbbbbbccccdddddeeeeeeeeefffff
+An external-cavity laser diode(ECLD) at \SI{976}{nm} is used for a seed laser.
+The seed laser is pre-amplified by tapered amplifier from \SI{30}{mW} to \SI{900}{mW}, and coupled to the YDFA input fiber which is a polarization maintining(PM) fiber with a FPC/AC connector.
+The seed input of the YDFA is connected to an isolator and wavelength divison multiplexing(WDM) filter, which are used to block return light such as backward ASE to the seed laser.
+The seed and pump light are combined to a double cladding PM fiber which has core of \SI{20}{\micro m} and cladding of \SI{125}{\micro m} by pump and signal combiner.
+The Pump light is generated
+
 
 \subsection{987\,nm amplifier system}
 
@@ -135,7 +134,7 @@ The first reference cited in the main text must be [1]
 Do not include numbers, bullets, or lists inside the abstract.
 
 \begin{figure}[h!]
-\centering\includegraphics[width=7cm]{./osafig1.pdf}
+\centering\includegraphics[width=7cm]{./Figure/osafig1.pdf}
 \caption{Sample caption (Fig. 2, \cite{Yelin:03}).}
 \label{fig:1}
 \end{figure}

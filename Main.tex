@@ -19,7 +19,9 @@
 % Set the article type
 %\articletype{Research Article}
 % Note that article type is not required for Express journals (OE, BOE, OME and OSAC)
-
+% \usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
 \usepackage{lineno}
 \usepackage{layout}
 \usepackage{lipsum}
@@ -41,7 +43,12 @@
 
 %%%%%%%%%%%%%%%%%%% abstract %%%%%%%%%%%%%%%%
 %% [use \begin{abstract*}...\end{abstract*} if exempt from copyright]
-
+\begin{comment}
+  The abstract should be limited to approximately 100 words
+  If the work of another author is cited in the abstract, that citation should be written out without a number, (e.g., journal, volume, first page, and year in square brackets [Opt. Express {\bfseries 22}, 1234 (2014)]), and a separate citation should be included in the body of the text
+  The first reference cited in the main text must be [1]
+  Do not include numbers, bullets, or lists inside the abstract.
+\end{comment}
 \begin{abstract}
 not yet
 \end{abstract}
@@ -114,15 +121,26 @@ Output of the second Yb-doped fiber is removed by CPS and collimated by pigtaile
 \subsection{976\,nm YDFA}
 
 \begin{figure}[h!]
-  \centering\includegraphics[width=0.5\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.eps}
-  \caption{Measurement output power of the \SI{976}{nm} fiber amplifier as and results of the simulation.}
-  \label{fig:1112YDFASystem}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.eps}
+    \subcaption{}
+  \end{minipage}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump70W976Seed0.24WLongStability_Exp.eps}
+    \subcaption{}
+  \end{minipage}
+  \caption{Measurement output power of the \SI{976}{nm} fiber amplifier and results of the simulation.}
+  \label{fig:Result976YDFA}
 \end{figure}
 
-The abstract should be limited to approximately 100 words
-If the work of another author is cited in the abstract, that citation should be written out without a number, (e.g., journal, volume, first page, and year in square brackets [Opt. Express {\bfseries 22}, 1234 (2014)]), and a separate citation should be included in the body of the text
-The first reference cited in the main text must be [1]
-Do not include numbers, bullets, or lists inside the abstract.
+The output power of \SI{976}{nm} fiber amplifier is shown in Fig.~\ref{fig:Result976YDFA}.
+At pump power of \SI{12}{W}, the gain of \SI{976}{nm} begins to exceed 1.
+We achieved \SI{6.7}{W} of \SI{976}{nm} at maximum pump power of \SI{68}{W} which is corresponding to \SI{14.5}{dB}, but the output decays with time and was reduced by about 10\% or more of its original power after 60 minutes.
+This is likely due to photodarkening caused by the high inversion distribution of Yb ion.
+
+
 
 \subsection{987\,nm YDFA}
 

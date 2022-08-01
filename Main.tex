@@ -33,7 +33,7 @@
 
 \title{Universal manuscript template for Optica Publishing Group journals}
 
-\author{Author One,\authormark{1, *} Author Two,\authormark{1} and Author Three\authormark{1}}
+\author{Yasutaka IMAI,\authormark{1, *}}
 
 \address{\authormark{1}Reserch Institute for Interdisciplinary Science, Okayama University, Okayama, Japan}
 
@@ -121,6 +121,17 @@ Output of the second Yb-doped fiber is removed by CPS and collimated by pigtaile
 \subsection{976\,nm YDFA}
 
 \begin{figure}[h!]
+  \centering\includegraphics[width=0.8\linewidth]{./Figure/Yb1200-20-125DC-PM_OutputComparisonByLength_915Pump976Seed_Exp.eps}
+  \caption{\SI{976}{\nm} YDFA system.}
+  \label{fig:OutputComparisonOf976YDFA}
+\end{figure}
+
+We tested \SI{263}{mm}, \SI{350}{mm}, \SI{438}{mm}, and \SI{499}{mm} Yb-doped fibers.
+The output powers from these fibers are shown in Fig.~\ref{fig:OutputComparisonOf976YDFA}.
+As the length of Yb-doped fiber increases, the slope efficiency increases, reaching maximum at length of \SI{438}{mm}.
+
+
+\begin{figure}[h!]
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.eps}
@@ -131,15 +142,15 @@ Output of the second Yb-doped fiber is removed by CPS and collimated by pigtaile
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump70W976Seed0.24WLongStability_Exp.eps}
     \subcaption{}
   \end{minipage}
-  \caption{Measurement output power of the \SI{976}{nm} fiber amplifier and results of the simulation.}
+  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
   \label{fig:Result976YDFA}
 \end{figure}
 
 The output power of \SI{976}{nm} fiber amplifier is shown in Fig.~\ref{fig:Result976YDFA}.
 At pump power of \SI{12}{W}, the gain of \SI{976}{nm} begins to exceed 1.
-We achieved \SI{6.7}{W} of \SI{976}{nm} at maximum pump power of \SI{68}{W} which is corresponding to \SI{14.5}{dB}, but the output decays with time and was reduced by about 10\% or more of its original power after 60 minutes.
-This is likely due to photodarkening caused by the high inversion distribution of Yb ion.
-
+The output power linearly increases with launced pump power, with a slope of ??.
+We achieved \SI{6.7}{W} of \SI{976}{nm} at maximum pump power of \SI{68}{W} which is corresponding to \SI{14.5}{dB}, but the output decays with time and was reduced by about 10\% or more of its original power after \SI{60}{\minute}.
+This is likely due to photodarkening caused by the high-inversion distribution of Yb ion \cite{jetschke2007Photodarkening}.
 
 
 \subsection{987\,nm YDFA}
@@ -148,58 +159,19 @@ This is likely due to photodarkening caused by the high inversion distribution o
 \subsection{1112\,nm YDFA}
 
 
-\section{Assessing final manuscript length}
-The Universal Manuscript Template is based on the Express journal layout and will provide an accurate length estimate for \emph{Optics Express}, \emph{Biomedical Optics Express},  \emph{Optical Materials Express}, and our newest title \emph{OSA Continuum}
-\emph{Applied Optics}, JOSAA, JOSAB, \emph{Optics Letters}, \emph{Optica}, and \emph{Photonics Research} publish articles in a two-column layout
-To estimate the final page count in a two-column layout, multiply the manuscript page count (in increments of 1/4 page) by 60\%
-For example, 11.5 pages in the Universal Manuscript Template are roughly equivalent to 7 composed two-column pages
-Note that the estimate is only an approximation, as treatment of figure sizing, equation display, and other aspects can vary greatly across manuscripts
-Authors of Letters may use the legacy template for a more accurate length estimate.
+\section{Conclusion}
+\begin{comment}
+  The Universal Manuscript Template is based on the Express journal layout and will provide an accurate length estimate for \emph{Optics Express}, \emph{Biomedical Optics Express},  \emph{Optical Materials Express}, and our newest title \emph{OSA Continuum}
+  \emph{Applied Optics}, JOSAA, JOSAB, \emph{Optics Letters}, \emph{Optica}, and \emph{Photonics Research} publish articles in a two-column layout
+  To estimate the final page count in a two-column layout, multiply the manuscript page count (in increments of 1/4 page) by 60\%
+  For example, 11.5 pages in the Universal Manuscript Template are roughly equivalent to 7 composed two-column pages
+  Note that the estimate is only an approximation, as treatment of figure sizing, equation display, and other aspects can vary greatly across manuscripts
+  Authors of Letters may use the legacy template for a more accurate length estimate.
+\end{comment}
 
 \section{Figures, tables, and supplementary materials}
 
-\subsection{Figures and tables}
-Figures and tables should be placed in the body of the manuscript.
-Standard \LaTeX{} environments should be used to place tables and figures:
-\begin{verbatim}
-\begin{figure}[htbp]
-\centering\includegraphics[width=7cm]{osafig1}
-\caption{Sample caption (Fig. 2, \cite{Yelin:03}).}
-\end{figure}
-\end{verbatim}
 
-\subsection{Supplementary materials in Optica Publishing Group journals}
-Our journals allow authors to include supplementary materials as integral parts of a manuscript
-Such materials are subject to peer-review procedures along with the rest of the paper and should be uploaded and described using our Prism manuscript system
-Please refer to the \href{https://opg.optica.org/submit/style/supplementary_materials.cfm}{Author Guidelines for Supplementary Materials in Optica Publishing Group Journals} for more detailed instructions on labeling supplementary materials and your manuscript.
-
-\textbf{Authors may also include Supplemental Documents} (PDF documents with expanded descriptions or methods) with the primary manuscript
-At this time, supplemental PDF files are not accepted for partner titles, JOCN and \emph{Photonics Research}
-To reference the supplementary document, the statement ``See Supplement 1 for supporting content.'' should appear at the bottom of the manuscript (above the References heading).
-
-\subsection{Sample Dataset Citation}
-
-1. M. Partridge, "Spectra evolution during coating," figshare (2014), http://dx.doi.org/10.6084/m9.figshare.1004612.
-
-\subsection{Sample Code Citation}
-
-2. C. Rivers, "Epipy: Python tools for epidemiology," figshare (2014) [retrieved 13 May 2015], http://dx.doi.org/10.6084/m9.figshare.1005064.
-
-
-\section{Mathematical and scientific notation}
-
-\subsection{Displayed equations} Displayed equations should be centered.
-Equation numbers should appear at the right-hand margin, in
-parentheses:
-\begin{equation}
-J(\rho) =
- \frac{\gamma^2}{2} \; \sum_{k({\rm even}) = -\infty}^{\infty}
-	\frac{(1 + k \tau)}{ \left[ (1 + k \tau)^2 + (\gamma  \rho)^2  \right]^{3/2} }.
-\end{equation}
-
-All equations should be numbered in the order in which they appear
-and should be referenced  from within the main text as Eq. (1),
-Eq. (2), and so on [or as inequality (1), etc., as appropriate].
 
 \section{Backmatter}
 
@@ -311,7 +283,7 @@ Add references with BibTeX or manually.
 \cite{Zhang:14,OSA,FORSTER2007,Dean2006,testthesis,Yelin:03,Masajada:13,codeexample}
 
 %%%%%%%%%% If using BibTeX:
-\bibliography{sample}
+\bibliography{2022YDFA}
 
 %%%%%%%%%% If preparing manually:
 % \begin{thebibliography}{1}

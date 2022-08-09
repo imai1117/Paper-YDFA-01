@@ -78,7 +78,7 @@ The fiber is fixed on top of the water-cooled heatsink with a thermal conductive
 The cladding power stripper(CPS) is connected after Yb-doped fiber to remove a residual pump power in the output of Yb-doped fiber.
 The output of YDFA system collimated by pigtailed collimator is separated into the ASE around 1030 nm and other wavelengths by a filter.
 
-
+\begin{comment}
 \subsection{987\,nm amplifier system}
 
 \begin{figure}[h!]
@@ -91,6 +91,7 @@ The design of the \SI{987}{\nm} YDFA system is shown in Fig.~\ref{fig:987YDFASys
 The \SI{987}{\nm} YDFA has almost the same configuration as the \SI{976}{\nm} YDFA system.
 The seed laser is composed of ECLD at \SI{987}{\nm}.
 The maximum seed and pump powers after a combiner are \SI{30}{\mW} and \SI{30}{\W}, respectively.
+\end{comment}
 
 
 \subsection{1112\,nm amplifier system}
@@ -121,43 +122,74 @@ Output of the second Yb-doped fiber is removed by CPS and collimated by pigtaile
 \subsection{976\,nm YDFA}
 
 \begin{figure}[h!]
-  \centering\includegraphics[width=0.8\linewidth]{./Figure/Yb1200-20-125DC-PM_OutputComparisonByLength_915Pump976Seed_Exp.eps}
-  \caption{\SI{976}{\nm} YDFA system.}
-  \label{fig:OutputComparisonOf976YDFA}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM_SignalComparisonByLength_915Pump976Seed_Exp}
+    \subcaption{}
+  \end{minipage}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM_ASEComparisonByLength_915Pump976Seed_Exp}
+    \subcaption{}
+  \end{minipage}
+  \caption{Measured \SI{976}{nm} and ASE around \SI{1030}{nm} power as a function of the launched \SI{915}{nm} pump power.}
+  \label{fig:OutputComparisonOfNLIGHT976YDFA}
 \end{figure}
 
-We tested \SI{263}{mm}, \SI{350}{mm}, \SI{438}{mm}, and \SI{499}{mm} Yb-doped fibers.
-The output powers from these fibers are shown in Fig.~\ref{fig:OutputComparisonOf976YDFA}.
-As the length of Yb-doped fiber increases, the slope efficiency increases, reaching maximum at length of \SI{438}{mm}.
+We measured the output of YDFAs with the \SI{263}{mm}, \SI{350}{mm}, \SI{438}{mm}, and \SI{499}{mm} length of Yb-doped fibers at pump powers up to about \SI{70}{W}.
+The output powers are shown in Fig.~\ref{fig:OutputComparisonOfNLIGHT976YDFA}.
+As increasing the length of Yb-doped fiber, the \SI{976}{nm} output power increases, reaching maximum at length of \SI{438}{mm}.
+For the \SI{438}{mm} fiber, the gain of \SI{976}{nm} began to exceed 1 at the pump power of \SI{12}{W}, and \SI{6.7}{W} output of \SI{976}{nm} was achieved with a slope efficiency of 0.12.
+The maximum \SI{976}{nm} gain corresponds to \SI{14.5}{dB}.
+In the test of \SI{976}{nmm} fiber, we applied the pump power less than \SI{25}{W} because the ASE power significantly increased.
 
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_LongTermStability_915Pump70W976Seed0.24W_Exp}
+    % \subcaption{}
+  \end{minipage}
+  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
+  \label{fig:LongTermStabilityOfNLIGHT976YDFA}
+\end{figure}
+
+Figure~\ref{fig:LongTermStabilityOfNLIGHT976YDFA} shows \SI{976}{nm} output stability of the \SI{438}{mm} Yb-doped fiber.
+The output decays in time to decrease by about 12\% of its original power after \SI{60}{\minute}.
+This is likely due to photodarkening caused by the high-inversion distribution of Yb ion \cite{jetschke2007Photodarkening}.
 
 \begin{figure}[h!]
   \begin{minipage}[b]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.eps}
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalComparisonByLength_915Pump976Seed0.24W_Exp}
     \subcaption{}
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_915Pump70W976Seed0.24WLongStability_Exp.eps}
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_ASEComparisonByLength_915Pump976Seed0.24W_Exp}
     \subcaption{}
   \end{minipage}
-  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
-  \label{fig:Result976YDFA}
+  \caption{Measured \SI{976}{nm} and ASE around \SI{1030}{nm} power as a function of the launched \SI{915}{nm} pump power.}
+  \label{fig:OutputComparisonOfCORACTIVE976YDFA}
 \end{figure}
 
-The output power of \SI{976}{nm} fiber amplifier is shown in Fig.~\ref{fig:Result976YDFA}.
-At pump power of \SI{12}{W}, the gain of \SI{976}{nm} begins to exceed 1.
-The output power linearly increases with launced pump power, with a slope of ??.
-We achieved \SI{6.7}{W} of \SI{976}{nm} at maximum pump power of \SI{68}{W} which is corresponding to \SI{14.5}{dB}, but the output decays with time and was reduced by about 10\% or more of its original power after \SI{60}{\minute}.
-This is likely due to photodarkening caused by the high-inversion distribution of Yb ion \cite{jetschke2007Photodarkening}.
 
-
-\subsection{987\,nm YDFA}
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalLongTermStability_915Pump70W976Seed0.24W_Exp}
+    %\subcaption{}
+  \end{minipage}
+  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
+  \label{fig:LongTermStabilityOfCORACTIVE976YDFA}
+\end{figure}
 
 
 \subsection{1112\,nm YDFA}
 
+
+\section{Discussion}
 
 \section{Conclusion}
 \begin{comment}

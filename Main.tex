@@ -50,7 +50,9 @@
   Do not include numbers, bullets, or lists inside the abstract.
 \end{comment}
 \begin{abstract}
-not yet
+We reported a single stage \SI{976}{nm} Yb-doped fiber amplifier(YDFA) and a double stage \SI{1112}{nm} YDFA with commercially available Yb-doped fibers.
+Both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
+In developing of two YDFAs of different wavelengths, estimation by numerical simulation is effective.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  body  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,7 +158,10 @@ In the test of \SI{976}{nmm} fiber, we applied the pump power less than \SI{25}{
 
 Figure~\ref{fig:LongTermStabilityOfNLIGHT976YDFA} shows \SI{976}{nm} output stability of the \SI{438}{mm} Yb-doped fiber.
 The output decays in time to decrease by about 12\% of its original power after \SI{60}{\minute}.
-This is likely due to photodarkening caused by the high-inversion distribution of Yb ion \cite{jetschke2007Photodarkening}.
+This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997Lifetime}.
+To avoid power decay by photodarkening, we tested Yb-doped phosphosilicate fiber(Coractive, DCF-YB-20/128P-FAC).
+We measured the output of the Yb-doped fiber by changing the fiber length, and obtained the results shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
+The \SI{976}{nm} output power reached a maximum of \SI{5.3}{W} at the \SI{172}{mm} length fiber.
 
 \begin{figure}[h!]
   \begin{minipage}[b]{0.5\linewidth}
@@ -201,16 +206,8 @@ This is likely due to photodarkening caused by the high-inversion distribution o
   Authors of Letters may use the legacy template for a more accurate length estimate.
 \end{comment}
 
-\section{Figures, tables, and supplementary materials}
-
-
-
-\section{Backmatter}
-
-Backmatter sections should be listed in the order Funding/Acknowledgment/Disclosures/Data Availability Statement/Supplemental Document section
-An example of backmatter with each of these sections included is shown below.
-
 \begin{backmatter}
+
 \bmsection{Funding}
 Content in the funding section will be generated entirely from details submitted to Prism
 Authors may add placeholder text in the manuscript to assess length, but any text added to this section in the manuscript will be replaced during production and will display official funder names along with any grant numbers provided
@@ -222,97 +219,9 @@ Acknowledgments should be included at the end of the document
 The section title should not follow the numbering scheme of the body of the paper
 Additional information crediting individuals who contributed to the work being reported, clarifying who received funding from a particular source, or other information that does not fit the criteria for the funding block may also be included; for example, ``K. Flockhart thanks the National Science Foundation for help identifying collaborators for this work.''
 
-\bmsection{Disclosures}
-Disclosures should be listed in a separate nonnumbered section at the end of the manuscript
-List the Disclosures codes identified on the \href{https://opg.optica.org/submit/review/conflicts-interest-policy.cfm}{Conflict of Interest policy page}, as shown in the examples below:
-
-\medskip
-
-\noindent ABC: 123 Corporation (I,E,P), DEF: 456 Corporation (R,S). GHI: 789 Corporation (C).
-
-\medskip
-
-\noindent If there are no disclosures, then list ``The authors declare no conflicts of interest.''
-
-
-\bmsection{Data Availability Statement}
-A Data Availability Statement (DAS) will be required for all submissions beginning 1 March 2021
-The DAS should be an unnumbered separate section titled ``Data Availability'' that
-immediately follows the Disclosures section
-See the \href{https://www.osapublishing.org/submit/review/data-availability-policy.cfm}{Data Availability Statement policy page} for more information.
-
-OSA has identified four common (sometimes overlapping) situations that authors should use as guidance
-These are provided as minimal models, and authors should feel free to
-include any additional details that may be relevant.
-
-\begin{enumerate}
-\item When datasets are included as integral supplementary material in the paper, they must be declared (e.g., as "Dataset 1" following our current supplementary materials policy) and cited in the DAS, and should appear in the references.
-
-\bmsection{Data availability} Data underlying the results presented in this paper are available in Dataset 1, Ref. [3].
-
-\bigskip
-
-\item When datasets are cited but not submitted as integral supplementary material, they must be cited in the DAS and should appear in the references.
-
-\bmsection{Data availability} Data underlying the results presented in this paper are available in Ref. [3].
-
-\bigskip
-
-\item If the data generated or analyzed as part of the research are not publicly available, that should be stated
-Authors are encouraged to explain why (e.g.~the data may be restricted for privacy reasons), and how the data might be obtained or accessed in the future.
-
-\bmsection{Data availability} Data underlying the results presented in this paper are not publicly available at this time but may be obtained from the authors upon reasonable request.
-
-\bigskip
-
-\item If no data were generated or analyzed in the presented research, that should be stated.
-
-\bmsection{Data availability} No data were generated or analyzed in the presented research.
-\end{enumerate}
-
-
-\bmsection{Supplemental document}
-See Supplement 1 for supporting content.
-
 \end{backmatter}
 
-\section{References}
-\label{sec:refs}
-Proper formatting of references is extremely important, not only for consistent appearance but also for accurate electronic tagging
-Please follow the guidelines provided below on formatting, callouts, and use of Bib\TeX.
-
-\subsection{Formatting reference items}
-Each source must have its own reference number
-Footnotes (notes at the bottom of text pages) are not used in our journals
-References require all author names, full titles, and inclusive pagination
-Examples of common reference types can be found in the  \href{https://www.osapublishing.org/submit/style/osa-styleguide.cfm} {style guide}.
-
-
-The commands \verb+\begin{thebibliography}{}+ and \verb+\end{thebibliography}+ format the section according to standard style, showing the title {\bfseries References}
-Use the \verb+\bibitem{label}+ command to start each reference.
-
-\subsection{Formatting reference citations}
-References should be numbered consecutively in the order in which they are referenced in the body of the paper
-Set reference callouts with standard \verb+\cite{}+ command or set manually inside square brackets [1].
-
-To reference multiple articles at once, simply use a comma to separate the reference labels, e.g. \verb+\cite{Yelin:03,Masajada:13,Zhang:14}+, produces \cite{Yelin:03,Masajada:13,Zhang:14}.
-%Using the \texttt{cite.sty} package will make these citations appear like so: [2--4].
-
-\subsection{Bib\TeX}
-\label{sec:bibtex}
-Bib\TeX{} may be used to create a file containing the references, whose contents (i.e., contents of \texttt{.bbl} file) can then be pasted into the bibliography section of the \texttt{.tex} file. A Bib\TeX{} style file, \texttt{osajnl.bst}, is provided.
-
-If your manuscript already contains a manually formatted \verb|\begin{thebibliography}|... \verb|\end{thebibliography}| list, then delete the \texttt{latexmkrc} file (if present) from your submission files
-However you should ensure that your manually-formatted reference list adheres to style accurately.
-
-\section{Conclusion}
-After proofreading the manuscript, compress your .tex manuscript file and all figures (which should be in EPS or PDF format) in a ZIP, TAR or TAR-GZIP package
-All files must be referenced at the root level (e.g., file \texttt{figure-1.eps}, not \texttt{/myfigs/figure-1.eps}). If there are supplementary materials, the associated files should not be included in your manuscript archive but be uploaded separately through the Prism interface.
-
 %%%%%%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%%%%%%%%
-
-Add references with BibTeX or manually.
-\cite{Zhang:14,OSA,FORSTER2007,Dean2006,testthesis,Yelin:03,Masajada:13,codeexample}
 
 %%%%%%%%%% If using BibTeX:
 \bibliography{2022YDFA}

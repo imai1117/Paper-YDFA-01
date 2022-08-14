@@ -22,6 +22,7 @@
 % \usepackage[hang,small,bf]{caption}
 \usepackage[subrefformat=parens]{subcaption}
 \captionsetup{compatibility=false}
+\usepackage{todonotes}
 \usepackage{lineno}
 \usepackage{layout}
 \usepackage{lipsum}
@@ -33,7 +34,7 @@
 
 \title{Universal manuscript template for Optica Publishing Group journals}
 
-\author{Yasutaka IMAI,\authormark{1, *}}
+\author{Yasutaka IMAI,\authormark{1, *}, Hidetoshi HARA,\authormark{1, *}}
 
 \address{\authormark{1}Reserch Institute for Interdisciplinary Science, Okayama University, Okayama, Japan}
 
@@ -50,14 +51,22 @@
   Do not include numbers, bullets, or lists inside the abstract.
 \end{comment}
 \begin{abstract}
-We reported a single stage \SI{976}{nm} Yb-doped fiber amplifier(YDFA) and a double stage \SI{1112}{nm} YDFA with commercially available Yb-doped fibers.
-Both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
-In developing of two YDFAs of different wavelengths, estimation by numerical simulation is effective.
+We reported on a single stage \SI{976}{nm} Yb-doped fiber amplifier(YDFA) and a double stage \SI{1112}{nm} YDFA with commercially available Yb-doped fibers.
+In developing of two YDFAs of different wavelengths, we estimated upper limit of Yb-doped fiber length and output of signal and ASE by numerical simulation.
+The simulataion results showed good agreement with experimental results, and both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  body  %%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoftodos
 \section{Introduction}
-not yet
+Rare-earth-doped fiber laser and amplifier systems are useful in a various fields.
+For example, the high-power and compact systems are used in laser processing, long-distance optical communication, and LiDAR systems.
+In physics, highly stable doped fiber systems are attracting as a light source for experiment \cite{burkleyYbFiberAmplifier2017, coluccelliOpticalFrequencyComb2016}.
+Although there are still some problems which are not fully understood such as photodarkening \cite{paschottaLifetimeQuenchingYbdoped1997}, remarkable progress has been made in their performance.
+
+Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{uncomplete sentence} \cite{franzenSinglestage1112Nm2018}.
+However, they are difficult to design because \SI{976}{nm} is in the middle of the absorption band and \SI{1112}{nm} is at the edge of the emission band of Yb-doped fiber.
+Therefore, numeraical simulation is indispensable.
 
 \section{Experimental setup}
 \subsection{976\,nm amplifier system}
@@ -158,7 +167,7 @@ In the test of \SI{976}{nmm} fiber, we applied the pump power less than \SI{25}{
 
 Figure~\ref{fig:LongTermStabilityOfNLIGHT976YDFA} shows \SI{976}{nm} output stability of the \SI{438}{mm} Yb-doped fiber.
 The output decays in time to decrease by about 12\% of its original power after \SI{60}{\minute}.
-This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997Lifetime}.
+This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschottaLifetimeQuenchingYbdoped1997}.
 To avoid power decay by photodarkening, we tested Yb-doped phosphosilicate fiber(Coractive, DCF-YB-20/128P-FAC).
 We measured the output of the Yb-doped fiber by changing the fiber length, and obtained the results shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
 The \SI{976}{nm} output power reached a maximum of \SI{5.3}{W} at the \SI{172}{mm} length fiber.

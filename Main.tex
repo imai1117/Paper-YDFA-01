@@ -26,15 +26,15 @@
 \usepackage{lineno}
 \usepackage{layout}
 \usepackage{lipsum}
-\usepackage{bm, amsmath, comment, color, soul, cite, siunitx}
+\usepackage{bm, amsmath, comment, color, soul, cite, siunitx, physics}
 \sisetup{parse-numbers = false}
 \linenumbers
 
 \begin{document}
 
-\title{Universal manuscript template for Optica Publishing Group journals}
+\title{Untitled}
 
-\author{Yasutaka IMAI,\authormark{1, *}, Hidetoshi HARA,\authormark{1, *}}
+\author{Yasutaka IMAI,\authormark{1, *}, Hideaki HARA,\authormark{1, *}}
 
 \address{\authormark{1}Reserch Institute for Interdisciplinary Science, Okayama University, Okayama, Japan}
 
@@ -61,12 +61,56 @@ The simulataion results showed good agreement with experimental results, and bot
 \section{Introduction}
 Rare-earth-doped fiber laser and amplifier systems are useful in a various fields.
 For example, the high-power and compact systems are used in laser processing, long-distance optical communication, and LiDAR systems.
-In physics, highly stable doped fiber systems are attracting as a light source for experiment \cite{burkleyYbFiberAmplifier2017, coluccelliOpticalFrequencyComb2016}.
+In physics, highly stable doped fiber systems are attractive as a light source for experiment \cite{burkleyYbFiberAmplifier2017, coluccelliOpticalFrequencyComb2016}.
 Although there are still some problems which are not fully understood such as photodarkening \cite{paschottaLifetimeQuenchingYbdoped1997}, remarkable progress has been made in their performance.
 
-Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{uncomplete sentence} \cite{franzenSinglestage1112Nm2018}.
+Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{incomplete sentence} \cite{franzenSinglestage1112Nm2018}.
 However, they are difficult to design because \SI{976}{nm} is in the middle of the absorption band and \SI{1112}{nm} is at the edge of the emission band of Yb-doped fiber.
 Therefore, numeraical simulation is indispensable.
+In this paper, we report on the development of YDFAs at \SI{976}{nm} and \SI{1112}{nm} and the comparison of experimental results with numerical simulations.
+
+\section{Yb-doped fiber amplifier}
+In developing fiber amplifiers, it is important to keep the undesired gain as low as possible.
+The gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilssonRingdopedCladdingpumpedSinglemode1998}.
+In the cases of amplified signal at \SI{976}{nm} with \SI{915}{nm} pumping, and amplified signal \SI{1112}{nm} with \SI{976}{nm} pumping, ASE gains can be expressed using the cross section in Fig.~\ref{fig:EnergylevelAndCrosssectionOfYb3+} as follows
+\begin{align}
+  G_{ASE} &= 0.29G_{976} + 0.96\beta A_{915}\\
+  G_{ASE} &= 6.5G_{1112} + 0.027\beta A_{976}.
+\end{align}
+Here,
+\begin{figure}[h!]
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/RelevantEnergyLevelOfYb3+InAluminosilicate}
+    %\subcaption{}
+  \end{minipage}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CrossSectionOfYb3+InAluminosilicate}
+    %\subcaption{}
+  \end{minipage}
+  \caption{Relevant energy level and cross sections of Yb-doped fiber.}
+  \label{fig:EnergylevelAndCrosssectionOfYb3+}
+\end{figure}
+The partial term scheme related this work shown in Fig.~\ref{fig:EnergylevelAndCrosssectionOfYb3+}.
+
+The steady-state rate equations to describe the pump, signal and ASE given by
+\begin{equation}
+  \begin{split}
+    \dv{N_{2}}{t} &= \frac{\Gamma_{p}}{A_{core}} \frac{\lambda_{p}(P^{+}_{p} + P^{-}_{p})}{hc} (\sigma_{a}(\lambda_{p})N_{1} - \sigma_{e}(\lambda_{p})N_{2})\\
+    &+ \frac{\Gamma_{s}}{A_{core}} \frac{\lambda_{s}(P^{+}_{s} + P^{-}_{s})}{hc} (\sigma_{a}(\lambda_{s})N_{1} - \sigma_{e}(\lambda_{s})N_{2})\\
+    &+ \frac{\Gamma_{a}}{A_{core}} \frac{\lambda_{a}(P^{+}_{a} + P^{-}_{a})}{hc} (\sigma_{a}(\lambda_{a})N_{1} - \sigma_{e}(\lambda_{a})N_{2}) - \frac{N_{2}}{\tau}
+  \end{split}
+\end{equation}
+\begin{equation*}
+  N = N_{1} + N_{2},
+\end{equation*}
+and propagation equations in fiber are described as
+\begin{align}
+  \dv{P^{\pm}_{p}}{z} &= \pm\Gamma_{p}P^{\pm}_{p}(\sigma_{e}(\lambda_{p})N_{2} - \sigma_{a}(\lambda_{p})N_{1}) \mp \alpha P^{\pm}_{p}\\
+  \dv{P^{\pm}_{s}}{z} &= \pm\Gamma_{s}P^{\pm}_{s}(\sigma_{e}(\lambda_{s})N_{2} - \sigma_{a}(\lambda_{s})N_{1}) \mp \alpha P^{\pm}_{s}\\
+  \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}^{3}.
+\end{align}
 
 \section{Experimental setup}
 \subsection{976\,nm amplifier system}

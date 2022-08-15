@@ -1,0 +1,33 @@
+高出力かつコンパクトなシステムはレーザー加工や長距離光通信の中継、LiDARシステムで活躍している。
+物理学においても高安定なドープファイバシステムは光周波数コムや分光用の基本は光源として衆目を集めている。
+未だフォトダークニング等の完全には解明されていない問題もあるが、その性能は目覚ましい進歩を遂げてきた。
+Ybドープファイバを用いた976nmと1112nmレーザーも物理学実験に用いる光源として有望である。
+しかし、波長がかたや吸収帯の真ん中、もう一方は放出帯域の端であるため設計が難しい。
+そのため数式シミュレーションが必要不可欠である。
+本誌では976nmと1112nmのファイバアンプの開発と実験結果の数式シミュレーションとの比較について報告する。
+
+The high-power and compact systems are used in laser processing, long-distance optical communication relays, and LiDAR systems.
+In physics, highly stable doped fiber systems are attracting attention as a basic light source for optical frequency comb and spectroscopy.
+Although there are still some problems, such as photo-darkening, that are not fully understood, remarkable progress has been made in their performance.
+The 976-nm and 1112-nm lasers using Yb-doped fiber are also promising light sources for physics experiments.
+However, their design is difficult because one wavelength is in the middle of the absorption band and the other is at the edge of the emission band.
+Therefore, mathematical simulations are indispensable.
+In this issue, we report on the development of fiber amplifiers for 976 nm and 1112 nm and the comparison of experimental results with mathematical simulations.
+
+####################################################
+\begin{equation}
+  \begin{split}
+    \dv{N_{2}}{t} &= \frac{\Gamma_{pump}}{A_{core}} \frac{\lambda_{pump}(P^{+}_{pump} + P^{-}_{pump})}{hc} (\sigma_{a}(\lambda_{pump})N_{1} - \sigma_{e}(\lambda_{pump})N_{2})\\
+    &+ \frac{\Gamma_{signal}}{A_{core}} \frac{\lambda_{signal}(P^{+}_{signal} + P^{-}_{signal})}{hc} (\sigma_{a}(\lambda_{signal})N_{1} - \sigma_{e}(\lambda_{signal})N_{2})\\
+    &+ \frac{\Gamma_{ase}}{A_{core}} \frac{\lambda_{ase}(P^{+}_{ase} + P^{-}_{ase})}{hc} (\sigma_{a}(\lambda_{ase})N_{1} - \sigma_{e}(\lambda_{ase})N_{2}) - \frac{N_{2}}{\tau}
+  \end{split}
+\end{equation}
+
+########################
+This section is devoted to provide a more quantitative discussion of the competing emissions at 980nm and 1030 nm under 915 nm pumping.
+Following ref. [2], the undesired gain at 1030 nm can be expressed in terms of the gain at two other wavelengths, namely the wavelength of maximum emission cross-section (975 nm) and the pump wavelength (915 nm).
+Using the cross-sections given in [2], the expression becomes (in decibels) G1030 = 0.25G975 + 0.72βαP, where β approximately equals the ratio of pump core area to effective mode field area of the laser mode (Aclad/Aeff) and αP denotes the pump absorption.
+In a typical double clad fiber suitable for high power operation the pump and signal core sizes are 30 µm and 250 µm respectively; this gives a value of β near 70.
+Thus, leaving the contribution of the laser gain G975 aside, it can be seen that for every decibel in pump absorption the gain at 1030 nm increases ~50 dB. This strong gain increase implies that the amplified spontaneous emission (ASE) will dominate the emission even for 1 dB (20%) pump absorption.
+Therefore, in this type of fiber it is not possible to obtain an efficient laser operation at 980 nm.
+#############################

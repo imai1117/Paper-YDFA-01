@@ -24,10 +24,22 @@ In this issue, we report on the development of fiber amplifiers for 976 nm and 1
 \end{equation}
 
 ########################
+
 This section is devoted to provide a more quantitative discussion of the competing emissions at 980nm and 1030 nm under 915 nm pumping.
 Following ref. [2], the undesired gain at 1030 nm can be expressed in terms of the gain at two other wavelengths, namely the wavelength of maximum emission cross-section (975 nm) and the pump wavelength (915 nm).
 Using the cross-sections given in [2], the expression becomes (in decibels) G1030 = 0.25G975 + 0.72βαP, where β approximately equals the ratio of pump core area to effective mode field area of the laser mode (Aclad/Aeff) and αP denotes the pump absorption.
 In a typical double clad fiber suitable for high power operation the pump and signal core sizes are 30 µm and 250 µm respectively; this gives a value of β near 70.
 Thus, leaving the contribution of the laser gain G975 aside, it can be seen that for every decibel in pump absorption the gain at 1030 nm increases ~50 dB. This strong gain increase implies that the amplified spontaneous emission (ASE) will dominate the emission even for 1 dB (20%) pump absorption.
 Therefore, in this type of fiber it is not possible to obtain an efficient laser operation at 980 nm.
+
 #############################
+
+The Yb-doped fiber(nLIGHT Yb1200-10/125DC) is used as a gain fiber.
+The length of the Yb-doped fiber is about \SI{1?}{m}.
+The output from Yb-doped fiber is separated into \SI{1112}{\nm} signal component and ASE component around \SI{1030}{\nm} by WDM, and only the \SI{1112}{\nm} signal component is coupled to the the second amplifier stage.
+The second Yb-doped fiber is the same one of the first Yb-doped fiber.
+The about \SI{3?}{m} long doped fiber is coiled to a diameter of \SI{10}{\cm} and fixed inside an aluminum enclosure with thermal conductive sheet.
+Temperature of the aluminum enclosure is controlled by peltier devices.
+Output of the second Yb-doped fiber is removed by CPS and collimated by pigtailed collimator.
+
+#######################

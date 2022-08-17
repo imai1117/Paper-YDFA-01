@@ -53,7 +53,7 @@
 \begin{abstract}
 We reported on a single stage \SI{976}{nm} Yb-doped fiber amplifier(YDFA) and a double stage \SI{1112}{nm} YDFA with commercially available Yb-doped fibers.
 In developing of two YDFAs of different wavelengths, we estimated upper limit of Yb-doped fiber length and output of signal and ASE by numerical simulation.
-The simulataion results showed good agreement with experimental results, and both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
+The simulation results showed good agreement with experimental results, and both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  body  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,17 +61,17 @@ The simulataion results showed good agreement with experimental results, and bot
 \section{Introduction}
 Rare-earth-doped fiber laser and amplifier systems are useful in a various fields.
 For example, the high-power and compact systems are used in laser processing, long-distance optical communication, and LiDAR systems.
-In physics, highly stable doped fiber systems are attractive as a light source for experiment \cite{burkleyYbFiberAmplifier2017, coluccelliOpticalFrequencyComb2016}.
-Although there are still some problems which are not fully understood such as photodarkening \cite{paschottaLifetimeQuenchingYbdoped1997}, remarkable progress has been made in their performance.
+In physics, highly stable doped fiber systems are attractive as a light source for experiment \cite{burkley2017Yb, coluccelli2016Optical}.
+Although there are still some problems which are not fully understood such as photodarkening \cite{paschotta1997Lifetime}, remarkable progress has been made in their performance.
 
-Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{incomplete sentence} \cite{franzenSinglestage1112Nm2018}.
+Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{incomplete sentence} \cite{franzen2018Singlestage}.
 However, they are difficult to design because \SI{976}{nm} is in the middle of the absorption band and \SI{1112}{nm} is at the edge of the emission band of Yb-doped fiber.
-Therefore, numeraical simulation is indispensable.
+Therefore, numerical simulation is indispensable.
 In this paper, we report on the development of YDFAs at \SI{976}{nm} and \SI{1112}{nm} and the comparison of experimental results with numerical simulations.
 
 \section{Yb-doped fiber amplifier}
 In developing fiber amplifiers, it is important to keep the undesired gain as low as possible.
-Gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilssonRingdopedCladdingpumpedSinglemode1998}.
+Gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilsson1998Ringdoped}.
 In the cases of amplified signal at \SI{976}{nm} with \SI{915}{nm} pumping, and amplified signal \SI{1112}{nm} with \SI{976}{nm} pumping, gain of ASE which has center wavelength of \SI{1023}{nm} can be expressed using the cross section in Fig.~\ref{fig:EnergylevelAndCrosssectionOfYb3+} as follows
 \begin{align}
   G_{1023} &= 0.29\cdot G_{976} + 0.96\cdot \beta A_{915} \label{Eq:976YDFAGain}\\
@@ -80,8 +80,8 @@ In the cases of amplified signal at \SI{976}{nm} with \SI{915}{nm} pumping, and 
 where $G_{\lambda}$ is gain at wavelength $\lambda$, $A_{\lambda}$ is absorption of the pump at $\lambda$, and $\beta$ is the ratio of pump propagation area to effective modal field area of \SI{1023}{nm} ASE.
 For the \SI{976}{nm} YDFA, as shown in Eq.~\eqref{Eq:976YDFAGain}, a smaller value of $\beta$ is necessary to suppress the ASE gain.
 In our \SI{976}{nm} system, we use Yb-doped fiber with core and cladding diameters of \SI{20}{\um} and \SI{125}{\um}, respectively, which has a relatively small $\beta \simeq 61$ in commercially available Yb-doped LMA fibers.
-Without considereation of the gain at \SI{976}{nm}, the ASE gain increases $\sim \SI{59}{\dB}$ for each \SI{1}{\dB} of \SI{915}{nm} pump absorption.
-The above result indicates that it is important for \SI{976}{nm} YDFA to controll \SI{915}{nm} pump absorption by using relative short Yb-doped fiber and to reduce input components to amplifier near ASE wavelength.
+Without consideration of the gain at \SI{976}{nm}, the ASE gain increases $\sim \SI{59}{\dB}$ for each \SI{1}{\dB} of \SI{915}{nm} pump absorption.
+The above result indicates that it is important for \SI{976}{nm} YDFA to control \SI{915}{nm} pump absorption by using relative short Yb-doped fiber and to reduce input components to amplifier near ASE wavelength.
 On the other hand, for the \SI{1112}{nm} system, pump absorption has less contribution to the ASE gain $G_{1023}$.
 Therefore, we use Yb-doped LMA fiber with a core diameter of \SI{10}{\um} and a cladding diameter of \SI{125}{\um}, which has a more single-mode characteristic than that used for \SI{976}{nm} system.
 
@@ -100,8 +100,8 @@ Therefore, we use Yb-doped LMA fiber with a core diameter of \SI{10}{\um} and a 
   \label{fig:EnergylevelAndCrosssectionOfYb3+}
 \end{figure}
 
-For more detailed estimation for YDFA, numerical simultaions are required.
-We developed the simulation code based on the model in \cite{roeser94980Nm2008}.
+For more detailed estimation for YDFA, numerical simulations are required.
+We developed the simulation code based on the model in \cite{roeser200894}.
 The simulations for forward and backward propagating pump, signal, and ASE were conducted according to the rate equation given by
 \begin{equation}
   \begin{split}
@@ -118,7 +118,7 @@ and propagation equations in fiber are described as
   \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}.
 \end{align}
 Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population densities of the ground and excited state, respectively.
-$\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagations.
+$\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
 $\sigma_{e}, \sigma_{a}$ are the emission and absorption cross sections of Yb ions, and $\tau$ is the spontaneous lifetime of Yb ion in the excited state.
 Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.
 
@@ -133,7 +133,7 @@ Comparison of simulation and experimental results will be discussed in a later S
 
 A schematic of the \SI{976}{\nm} YDFA system is shown in Fig.~\ref{fig:976YDFASystem}.
 An external-cavity laser diode(ECLD) at \SI{976}{\nm} followed a tapered amplifier(TA) is used as a seed laser.
-The output of seed laser is pre-amplified by the TA up to nearly \SI{1}{\W}, and coupled to the YDFA input which is a polarization maintining(PM) fiber with a FPC/AC connector.
+The output of seed laser is pre-amplified by the TA up to nearly \SI{1}{\W}, and coupled to the YDFA input which is a polarization maintaining(PM) fiber with a FPC/AC connector.
 Owing to the spatial-mode mismatch of the output from TA, the power coupled to the input is only \SI{300}{\mW}.
 The input of YDFA is fusion-spliced to an inline isolator and a wavelength division multiplexing(WDM) filter, which protect the seed laser from backward propagation light generated in a gain fiber.
 The WDM which has three ports: a common port, a pass port, and a reflection port separates ASE around \SI{1020}{\nm} from signal path(common-pass) to the reflection port.
@@ -144,22 +144,7 @@ A signal pump combiner, which has a signal port with PM fiber of \SI{6/125}{\um}
 The Yb-doped fiber fusion-spliced from the common port fiber of the combiner is rolled to approximately \SI{100}{\mm} in diameter and fixed on a water-cooled heatsink with a thermal conductive sheet.
 For safe operation of the YDFA, all the bare glass cladding around the fusion-spliced points are recoated with low-refractive index polymer.
 A residual pump power in the output of the Yb-doped fiber is removed by a cladding power stripper(CPS).
-Amplified signal and ASE are collimated by pigtailed collimator, separated by a filter, and measaured by power meters, respectively.
-
-\begin{comment}
-\subsection{987\,nm amplifier system}
-
-\begin{figure}[h!]
-  \centering\includegraphics[width=\linewidth]{./Figure/976nmYDFASystem.eps}
-  \caption{\SI{987}{\nm} YDFA system.}
-  \label{fig:987YDFASystem}
-\end{figure}
-
-The design of the \SI{987}{\nm} YDFA system is shown in Fig.~\ref{fig:987YDFASystem}.
-The \SI{987}{\nm} YDFA has almost the same configuration as the \SI{976}{\nm} YDFA system.
-The seed laser is composed of ECLD at \SI{987}{\nm}.
-The maximum seed and pump powers after a combiner are \SI{30}{\mW} and \SI{30}{\W}, respectively.
-\end{comment}
+Amplified signal and ASE are collimated by pigtailed collimator, separated by a filter, and measured by power meters, respectively.
 
 
 \subsection{1112\,nm amplifier system}
@@ -199,16 +184,17 @@ The output power of the \SI{1112}{\nm} signal and the ASE near \SI{1020}{\nm} ar
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM_ASEComparisonByLength_915Pump976Seed_Exp}
     \subcaption{}
   \end{minipage}
-  \caption{Measured \SI{976}{nm} and ASE around \SI{1030}{nm} power as a function of the launched \SI{915}{nm} pump power.}
+  \caption{Measured \SI{976}{\nm} and ASE around \SI{1020}{\nm} power as a function of the launched \SI{915}{\nm} pump power.}
   \label{fig:OutputComparisonOfNLIGHT976YDFA}
 \end{figure}
 
-We measured the output of YDFA with Yb-doped aluminosilicate fiber(nLIGHT, Yb1200-20/125DC-PM).
+The \SI{976}{\nm} and ASE near \SI{1020}{\nm} output power of the YDFA are shown in Fig.~\ref{fig:OutputComparisonOfNLIGHT976YDFA}.
+In this measurement, we used a Yb-doped aluminosilicate fiber(nLIGHT, Yb1200-20/125DC-PM) as a gain fiber.
 We tested \SI{263}{\mm}, \SI{350}{\mm}, \SI{438}{\mm}, and \SI{499}{\mm} long of the Yb-doped fibers at pump powers up to about \SI{70}{\W}.
-The output powers are shown in Fig.~\ref{fig:OutputComparisonOfNLIGHT976YDFA}.
-As increasing the length of Yb-doped fiber, the \SI{976}{\nm} output power increases, reaching maximum at length of \SI{438}{\mm}.
-For the \SI{438}{\mm} fiber, the gain of \SI{976}{\nm} began to exceed 1 at the pump power of \SI{12}{\W}, and \SI{6.7}{\W} output of \SI{976}{\nm} was achieved with a slope efficiency of 0.12.
+As increasing the length of the Yb-doped fiber, the \SI{976}{\nm} output power increases, and reaches maximum at the \SI{438}{\mm} long fiber.
+In the test of \SI{438}{\mm} long fiber, the \SI{976}{\nm} gain began to exceed 1 at the pump power of \SI{12}{\W}, and \SI{6.7}{\W} output of \SI{976}{\nm} was achieved with a slope efficiency of 0.12.
 The maximum \SI{976}{\nm} gain corresponds to \SI{14.5}{\dB}.
+The reason for the lower slope efficiency compared to YDFAs which has operating wavelength above \SI{1}{\um} is that the \SI{976}{nm} transition occurs between the lowest sublevel of the ground state and the lowest sublevel of the excited state in Yb ion.
 In the test of \SI{499}{\mm} fiber, we applied the pump power less than \SI{25}{\W} because the ASE power significantly increased.
 
 \begin{figure}[h!]
@@ -218,19 +204,15 @@ In the test of \SI{499}{\mm} fiber, we applied the pump power less than \SI{25}{
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/Yb1200-20-125DC-PM438mm_LongTermStability_915Pump70W976Seed0.24W_Exp}
     % \subcaption{}
   \end{minipage}
-  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
+  \caption{The output power of the \SI{976}{\nm} YDFA with during \SI{60}{\minute}.}
   \label{fig:LongTermStabilityOfNLIGHT976YDFA}
 \end{figure}
-
-Figure~\ref{fig:LongTermStabilityOfNLIGHT976YDFA} shows \SI{976}{\nm} output stability of the \SI{438}{\mm} Yb-doped fiber.
-The output decays in time to decrease by about 12\% of its original power after \SI{60}{\minute}.
-This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschottaLifetimeQuenchingYbdoped1997}.
-To avoid power decay by photodarkening, we tested Yb-doped phosphosilicate fiber(Coractive, DCF-YB-20/128P-FAC).
-We measured the output of the Yb-doped fiber by changing the fiber length, and obtained the results shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
-The \SI{976}{nm} output power reached a maximum of \SI{5.3}{\W} at the \SI{172}{\mm} length fiber.
-Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output stability of the \SI{172}{\mm} Yb-doped fiber.
-
-\begin{figure}[h!]
+To measure the output stability of the \SI{976}{nm} YDFA, we logged the maximum output of the \SI{438}{mm} long fiber during \SI{60}{\minute}.
+As the result shown in Fig.~\ref{fig:LongTermStabilityOfNLIGHT976YDFA}, the output of YDFA decayed in time to decrease by about 88\% of its original power after \SI{60}{\minute}.
+This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997Lifetime}.
+Although the photodarkening is not fully understood, there are many proposals to mitigate the effect \cite{manek-honninger2007Photodarkening, zhao2019Elimination, engholm2008Preventing}.
+To avoid power decay by photodarkening, we tested another Yb-doped fiber with phosphosilicate-glass core(Coractive, DCF-YB-20/128P-FAC).
+\begin{figure}[h]
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalComparisonByLength_915Pump976Seed0.24W_Exp}
@@ -241,10 +223,12 @@ Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output 
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_ASEComparisonByLength_915Pump976Seed0.24W_Exp}
     \subcaption{}
   \end{minipage}
-  \caption{Measured \SI{976}{nm} and ASE around \SI{1030}{nm} power as a function of the launched \SI{915}{nm} pump power.}
+  \caption{Measured \SI{976}{\nm} and ASE around \SI{1020}{\nm} power as a function of the launched \SI{915}{\nm} pump power.}
   \label{fig:OutputComparisonOfCORACTIVE976YDFA}
 \end{figure}
-
+The output powers of YDFA with the \SI{162}{\mm}, \SI{172}{\mm}, and \SI{190}{\mm} long doped-phosphosilicate fiber are shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
+The \SI{976}{nm} output power reached a maximum of \SI{5.3}{\W} at the \SI{172}{\mm} length fiber.
+Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output stability of the \SI{172}{\mm} Yb-doped fiber.
 
 \begin{figure}[h!]
   \centering
@@ -253,7 +237,7 @@ Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output 
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalLongTermStability_915Pump70W976Seed0.24W_Exp}
     %\subcaption{}
   \end{minipage}
-  \caption{Measured output power of the \SI{976}{nm} fiber amplifier as a function of the launched \SI{915}{nm} pump power and results of the simulation.}
+  \caption{The output power of the \SI{976}{\nm} YDFA during \SI{60}{\minute}.}
   \label{fig:LongTermStabilityOfCORACTIVE976YDFA}
 \end{figure}
 
@@ -261,7 +245,17 @@ Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output 
 \subsection{1112\,nm YDFA}
 
 
-\section{Discussion} \label{sec:Discussion}
+\section{Comparison between numerical simulation and experimental results} \label{sec:Discussion}
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CompareSimAndExp_Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.pdf}
+    %\subcaption{}
+  \end{minipage}
+  \caption{Comparison between numerical simulation and experimental results of the \SI{976}{\nm} YDFA.}
+  \label{fig:ComparisonBetweenSimAndExpOf976YDFA}
+\end{figure}
 
 \section{Conclusion}
 \begin{comment}

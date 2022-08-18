@@ -53,7 +53,7 @@
 \begin{abstract}
 We reported on a single stage \SI{976}{nm} Yb-doped fiber amplifier(YDFA) and a double stage \SI{1112}{nm} YDFA with commercially available Yb-doped fibers.
 In developing of two YDFAs of different wavelengths, we estimated upper limit of Yb-doped fiber length and output of signal and ASE by numerical simulation.
-The simulation results showed good agreement with experimental results, and both YDFAs achieved stable several Watts continuous-wave(CW) outputs.
+The simulation results showed good agreement with experimental results, and both YDFAs achieved stable several Watts continuous-wave(CW) outputs\todo{need to be rewritten depending on simulation result}.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%  body  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,15 +156,16 @@ Amplified signal and ASE are collimated by pigtailed collimator, separated by a 
 \end{figure}
 
 A schematic of the \SI{1112}{\nm} YDFA system is shown in Fig.~\ref{fig:1112YDFASystem}.
-The \SI{1112}{\nm} laser system is composed of a seed laser and two-stage YDFA.
+The \SI{1112}{\nm} YDFA system is composed of a seed laser and two amplifiers.
 A fiber laser at \SI{1112}{\nm}(Menlo systems Orange one-2) is used as the seed laser.
-The output singlemode fiber with a FPC/AC connector is contacted to the input singlemode fiber of the first YDFA stage with a mating sleeve.
-A coupled power into the input is about \SI{100?}{\mW}.
-As pump lasers, two \SI{976}{\nm} fiber-coupled diode lasers based on an air-cooled heatsink with maximum outputs of \SI{7}{\W} are used.
-The configuration of the first stage of \SI{1112}{\nm}YDFA is similar to the \SI{976}{\nm} system except for an isolator and fiber type.
-The seed laser and the pump laser are combined into a double-cladding fiber of \SI{10/125}{\um} by a pump-signal combiner, and launched into the first Yb-doped fiber.
+The output singlemode fiber with a FPC/AC connector is contacted to the input singlemode fiber of the first stage amplifier with a mating sleeve.
+A coupled power into the input is about \SI{80}{\mW}.
+As pump lasers, a \SI{976}{\nm} fiber-coupled diode laser installed on an air-cooled heatsink with maximum output of \SI{7}{\W} is used for the first and second stage, respectively.
+The configuration of the first stage amplifier is similar to the \SI{976}{\nm} system except fiber type.
+The seed laser and the pump laser are combined into a double-cladding fiber of \SI{10/125}{\um} by a pump-signal combiner.
+The first Yb-doped fiber is under no temperature control because the pump power is limited to less than \SI{1}{\W}.
 Before a second pump-signal combiner, the ASE around \SI{1020}{\nm} generated in first Yb-doped fiber is removed by a WDM.
-The \SI{1112}{\nm} signal after WDM is \SI{300?}{\mW}.
+The \SI{1112}{\nm} signal after the second combiner is \SI{220}{\mW}.
 The second Yb-doped fiber is rolled in a diameter of \SI{100?}{\mm}, and fixed inside an aluminum enclosure with thermal conductive sheet.
 Temperature of the aluminum enclosure is controlled by peltier devices.
 Similar to \SI{976}{\nm} system, the output of the second Yb-doped fiber is removed by CPS and collimated by pigtailed collimator.
@@ -208,10 +209,10 @@ In the test of \SI{499}{\mm} fiber, we applied the pump power less than \SI{25}{
   \label{fig:LongTermStabilityOfNLIGHT976YDFA}
 \end{figure}
 To measure the output stability of the \SI{976}{nm} YDFA, we logged the maximum output of the \SI{438}{mm} long fiber during \SI{60}{\minute}.
-As the result shown in Fig.~\ref{fig:LongTermStabilityOfNLIGHT976YDFA}, the output of YDFA decayed in time to decrease by about 88\% of its original power after \SI{60}{\minute}.
+As the result shown in Fig.~\ref{fig:LongTermStabilityOfNLIGHT976YDFA}, the output of YDFA decayed in time to decrease by 12\% of its original power after \SI{60}{\minute}.
 This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997Lifetime}.
 Although the photodarkening is not fully understood, there are many proposals to mitigate the effect \cite{manek-honninger2007Photodarkening, zhao2019Elimination, engholm2008Preventing}.
-To avoid power decay by photodarkening, we tested another Yb-doped fiber with phosphosilicate-glass core(Coractive, DCF-YB-20/128P-FAC).
+We developed another \SI{976}{\nm} YDFA using a Yb-doped fiber with phosphosilicate-glass core(Coractive, DCF-YB-20/128P-FAC).
 \begin{figure}[h]
   \begin{minipage}[b]{0.5\linewidth}
     \centering
@@ -228,24 +229,42 @@ To avoid power decay by photodarkening, we tested another Yb-doped fiber with ph
 \end{figure}
 The output powers of YDFA with the \SI{162}{\mm}, \SI{172}{\mm}, and \SI{190}{\mm} long doped-phosphosilicate fiber are shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
 The \SI{976}{nm} output power reached a maximum of \SI{5.3}{\W} at the \SI{172}{\mm} length fiber.
-Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output stability of the \SI{172}{\mm} Yb-doped fiber.
-
+As with tae case of the aluminosilicate fiber, the \SI{976}{\nm} output power was recorded with a duration of \SI{60}{\minute}.
+The fluctuation of output was less than 1.5\% as shown in Fig.~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA}, which indicates that photo darkening is significantly reduced.
 \begin{figure}[h!]
   \centering
   \begin{minipage}[b]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalLongTermStability_915Pump70W976Seed0.24W_Exp}
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalLongTermStability_915Pump70W976Seed0.24W_Exp.pdf}
     %\subcaption{}
   \end{minipage}
   \caption{The output power of the \SI{976}{\nm} YDFA during \SI{60}{\minute}.}
   \label{fig:LongTermStabilityOfCORACTIVE976YDFA}
 \end{figure}
-
-
 \subsection{1112\,nm YDFA}
+\begin{figure}[h]
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/1112nmYDFA2ndStageOutput_Exp.pdf}
+    \subcaption{}
+    \label{fig:OutputOf1112YDFA}
+  \end{minipage}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/1112nmYDFA2ndStageOutputStability.pdf}
+    \subcaption{}
+    \label{fig:StabilityOf1112YDFA}
+  \end{minipage}
+  \caption{The output of \SI{1112}{\nm} YDFA. \subref{fig:OutputOf1112YDFA} The \SI{1112}{nm} and forward ASE as a function of the \SI{976}{\nm} pump power applied to the second stage amplifier. \subref{fig:StabilityOf1112YDFA} The \SI{1112}{\nm} output stability in duration over \SI{3}{\hour}.}
+\end{figure}
+In the \SI{1112}{\nm} YDFA, we used a Yb-doped fiber with a core based on aluminosilicate glass(nLIGHT, Yb1200-10/125DC) as a gain fiber.
+The \SI{3}{\m} and \SI{4}{\m} long gain fiber are embedded in the first-stage and second-stage amplifiers, respectively.
+Plots of the amplified \SI{1112}{nm} and forward ASE as a function of pump power applied to the second-stage amplifier are shown in Fig.~\ref{fig:OutputOf1112YDFA}.
+The maximum generation of \SI{1112}{\nm} is \SI{3.8}{\W} at applied pump power of \SI{7}{\W}, which corresponds to the gain of \SI{12.3}{\dB}.
+As shown in Fig.~\ref{fig:StabilityOf1112YDFA}, the variation of \SI{1112}{\nm} is less than 2.4\%.
 
 
-\section{Comparison between numerical simulation and experimental results} \label{sec:Discussion}
+\section{Comparison between numerical simulations and experimental results} \label{sec:Discussion}
 \begin{figure}[h!]
   \centering
   \begin{minipage}[b]{0.5\linewidth}
@@ -257,15 +276,9 @@ Figure~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA} shows \SI{976}{\nm} output 
   \label{fig:ComparisonBetweenSimAndExpOf976YDFA}
 \end{figure}
 
+
 \section{Conclusion}
-\begin{comment}
-  The Universal Manuscript Template is based on the Express journal layout and will provide an accurate length estimate for \emph{Optics Express}, \emph{Biomedical Optics Express},  \emph{Optical Materials Express}, and our newest title \emph{OSA Continuum}
-  \emph{Applied Optics}, JOSAA, JOSAB, \emph{Optics Letters}, \emph{Optica}, and \emph{Photonics Research} publish articles in a two-column layout
-  To estimate the final page count in a two-column layout, multiply the manuscript page count (in increments of 1/4 page) by 60\%
-  For example, 11.5 pages in the Universal Manuscript Template are roughly equivalent to 7 composed two-column pages
-  Note that the estimate is only an approximation, as treatment of figure sizing, equation display, and other aspects can vary greatly across manuscripts
-  Authors of Letters may use the legacy template for a more accurate length estimate.
-\end{comment}
+
 
 \begin{backmatter}
 

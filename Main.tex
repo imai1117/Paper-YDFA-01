@@ -27,6 +27,7 @@
 \usepackage{layout}
 \usepackage{lipsum}
 \usepackage{bm, amsmath, comment, color, soul, cite, siunitx, physics}
+\usepackage{cleveref}
 \sisetup{parse-numbers = false}
 \linenumbers
 
@@ -61,17 +62,17 @@ The simulation results showed good agreement with experimental results, and both
 \section{Introduction}
 Rare-earth-doped fiber laser and amplifier systems are useful in a various fields.
 For example, the high-power and compact systems are used in laser processing, long-distance optical communication, and LiDAR systems.
-In physics, highly stable doped fiber systems are attractive as a light source for experiment \cite{burkley2017Yb, coluccelli2016Optical}.
-Although there are still some problems which are not fully understood such as photodarkening \cite{paschotta1997Lifetime}, remarkable progress has been made in their performance.
+In physics, highly stable doped fiber systems are attractive as a light source for experiment \cite{burkley2017yb, coluccelli2016optical}.
+Although there are still some problems which are not fully understood such as photodarkening \cite{paschotta1997lifetime}, remarkable progress has been made in their performance.
 
-Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{incomplete sentence} \cite{franzen2018Singlestage}.
+Single-frequency light sources at \SI{976}{nm} and \SI{1112}{nm} also such as spectroscopy of Yb atoms \todo{incomplete sentence} \cite{franzen2018singlestage}.
 However, they are difficult to design because \SI{976}{nm} is in the middle of the absorption band and \SI{1112}{nm} is at the edge of the emission band of Yb-doped fiber.
 Therefore, numerical simulation is indispensable.
 In this paper, we report on the development of YDFAs at \SI{976}{nm} and \SI{1112}{nm} and the comparison of experimental results with numerical simulations.
 
 \section{Yb-doped fiber amplifier}
 In developing fiber amplifiers, it is important to keep the undesired gain as low as possible.
-Gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilsson1998Ringdoped}.
+Gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilsson1998ringdoped}.
 In the cases of amplified signal at \SI{976}{nm} with \SI{915}{nm} pumping, and amplified signal \SI{1112}{nm} with \SI{976}{nm} pumping, gain of ASE which has center wavelength of \SI{1023}{nm} can be expressed using the cross section in Fig.~\ref{fig:EnergylevelAndCrosssectionOfYb3+} as follows
 \begin{align}
   G_{1023} &= 0.29\cdot G_{976} + 0.96\cdot \beta A_{915} \label{Eq:976YDFAGain}\\
@@ -106,16 +107,17 @@ The simulations for forward and backward propagating pump, signal, and ASE were 
 \begin{equation}
   \begin{split}
     N &= N_{1} + N_{2}\\
-    \dv{N_{2}}{t} &= \frac{1}{A_{core}} \frac{\lambda_{p}}{hc}\Gamma_{p} (P^{+}_{p} + P^{-}_{p}) (\sigma_{a}(\lambda_{p})N_{1} - \sigma_{e}(\lambda_{p})N_{2})\\
-    &+ \frac{1}{A_{core}} \frac{\lambda_{s}}{hc}\Gamma_{s} (P^{+}_{s} + P^{-}_{s}) (\sigma_{a}(\lambda_{s})N_{1} - \sigma_{e}(\lambda_{s})N_{2})\\
-    &+ \frac{1}{A_{core}} \frac{\lambda_{a}}{hc}\Gamma_{a} (P^{+}_{a} + P^{-}_{a}) (\sigma_{a}(\lambda_{a})N_{1} - \sigma_{e}(\lambda_{a})N_{2}) - \frac{N_{2}}{\tau},
+    \dv{N_{2}}{t} &= \frac{1}{A_{core}} (\sigma_{a}(\lambda_{p})N_{1} - \sigma_{e}(\lambda_{p})N_{2}) \frac{\lambda_{p}}{hc}\Gamma_{p} (P^{+}_{p} + P^{-}_{p})\\
+    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{s})N_{1} - \sigma_{e}(\lambda_{s})N_{2}) \frac{\lambda_{s}}{hc}\Gamma_{s} (P^{+}_{s} + P^{-}_{s})\\
+    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{a})N_{1} - \sigma_{e}(\lambda_{a})N_{2}) \frac{\lambda_{a}}{hc}\Gamma_{a} (P^{+}_{a} + P^{-}_{a}) - \frac{N_{2}}{\tau},
   \end{split}
+  \label{eq:RateEquation}
 \end{equation} \todo{rewrite equations later}
 and propagation equations in fiber are described as
 \begin{align}
-  \dv{P^{\pm}_{p}}{z} &= \pm\Gamma_{p}P^{\pm}_{p}(\sigma_{e}(\lambda_{p})N_{2} - \sigma_{a}(\lambda_{p})N_{1}) \mp \alpha P^{\pm}_{p}\\
-  \dv{P^{\pm}_{s}}{z} &= \pm\Gamma_{s}P^{\pm}_{s}(\sigma_{e}(\lambda_{s})N_{2} - \sigma_{a}(\lambda_{s})N_{1}) \mp \alpha P^{\pm}_{s}\\
-  \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}.
+  \dv{P^{\pm}_{p}}{z} &= \pm\Gamma_{p}P^{\pm}_{p}(\sigma_{e}(\lambda_{p})N_{2} - \sigma_{a}(\lambda_{p})N_{1}) \mp \alpha P^{\pm}_{p} \label{eq:PumpPropagationEquation}\\
+  \dv{P^{\pm}_{s}}{z} &= \pm\Gamma_{s}P^{\pm}_{s}(\sigma_{e}(\lambda_{s})N_{2} - \sigma_{a}(\lambda_{s})N_{1}) \mp \alpha P^{\pm}_{s} \label{eq:SignalPropagationEquation}\\
+  \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}. \label{eq:ASEPropagationEquation}
 \end{align}
 Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population densities of the ground and excited state, respectively.
 $\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
@@ -191,11 +193,12 @@ The output power of the \SI{1112}{\nm} signal and the ASE near \SI{1020}{\nm} ar
 
 The \SI{976}{\nm} and ASE near \SI{1020}{\nm} output power of the YDFA are shown in Fig.~\ref{fig:OutputComparisonOfNLIGHT976YDFA}.
 In this measurement, we used a Yb-doped aluminosilicate fiber(nLIGHT, Yb1200-20/125DC-PM) as a gain fiber.
-We tested \SI{263}{\mm}, \SI{350}{\mm}, \SI{438}{\mm}, and \SI{499}{\mm} long of the Yb-doped fibers at pump powers up to about \SI{70}{\W}.
+We tested the \SI{263}{\mm}, \SI{350}{\mm}, \SI{438}{\mm}, and \SI{499}{\mm} long Yb-doped fibers at pump powers up to about \SI{70}{\W}.
 As increasing the length of the Yb-doped fiber, the \SI{976}{\nm} output power increases, and reaches maximum at the \SI{438}{\mm} long fiber.
-In the test of \SI{438}{\mm} long fiber, the \SI{976}{\nm} gain began to exceed 1 at the pump power of \SI{12}{\W}, and \SI{6.7}{\W} output of \SI{976}{\nm} was achieved with a slope efficiency of 0.12.
+The \SI{976}{\nm} output increased with pump power to exceed the gain of \SI{1}{\dB} at \SI{12}{\W} pump power, and \SI{6.7}{\W} was achieved at \SI{68}{\W} pump power with a slope efficiency of 0.12.
 The maximum \SI{976}{\nm} gain corresponds to \SI{14.5}{\dB}.
 The reason for the lower slope efficiency compared to YDFAs which has operating wavelength above \SI{1}{\um} is that the \SI{976}{nm} transition occurs between the lowest sublevel of the ground state and the lowest sublevel of the excited state in Yb ion.
+The ASE also increased with pump power above \SI{6}{\W}, but remained almost constant of \SI{0.4}{\W} above \SI{30}{\W} pump power.
 In the test of \SI{499}{\mm} fiber, we applied the pump power less than \SI{25}{\W} because the ASE power significantly increased.
 
 \begin{figure}[h!]
@@ -210,8 +213,8 @@ In the test of \SI{499}{\mm} fiber, we applied the pump power less than \SI{25}{
 \end{figure}
 To measure the output stability of the \SI{976}{nm} YDFA, we logged the maximum output of the \SI{438}{mm} long fiber during \SI{60}{\minute}.
 As the result shown in Fig.~\ref{fig:LongTermStabilityOfNLIGHT976YDFA}, the output of YDFA decayed in time to decrease by 12\% of its original power after \SI{60}{\minute}.
-This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997Lifetime}.
-Although the photodarkening is not fully understood, there are many proposals to mitigate the effect \cite{manek-honninger2007Photodarkening, zhao2019Elimination, engholm2008Preventing}.
+This is mainly due to photodarkening caused by the high-inversion distribution of Yb ion \cite{paschotta1997lifetime}.
+Although the photodarkening is not fully understood, there are many proposals to mitigate the effect \cite{manek-honninger2007photodarkening, zhao2019elimination, engholm2008preventing}.
 We developed another \SI{976}{\nm} YDFA using a Yb-doped fiber with phosphosilicate-glass core(Coractive, DCF-YB-20/128P-FAC).
 \begin{figure}[h]
   \begin{minipage}[b]{0.5\linewidth}
@@ -227,20 +230,24 @@ We developed another \SI{976}{\nm} YDFA using a Yb-doped fiber with phosphosilic
   \caption{Measured \SI{976}{\nm} and ASE around \SI{1020}{\nm} power as a function of the launched \SI{915}{\nm} pump power.}
   \label{fig:OutputComparisonOfCORACTIVE976YDFA}
 \end{figure}
-The output powers of YDFA with the \SI{162}{\mm}, \SI{172}{\mm}, and \SI{190}{\mm} long doped-phosphosilicate fiber are shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
-The \SI{976}{nm} output power reached a maximum of \SI{5.3}{\W} at the \SI{172}{\mm} length fiber.
-As with tae case of the aluminosilicate fiber, the \SI{976}{\nm} output power was recorded with a duration of \SI{60}{\minute}.
-The fluctuation of output was less than 1.5\% as shown in Fig.~\ref{fig:LongTermStabilityOfCORACTIVE976YDFA}, which indicates that photo darkening is significantly reduced.
+The output powers with the \SI{162}{\mm}, \SI{172}{\mm}, and \SI{190}{\mm} long phosphosilicate fibers are shown in the Fig.~\ref{fig:OutputComparisonOfCORACTIVE976YDFA}.
+Both the \SI{976}{nm} amplified signal and the ASE increased with pump power and reached a maximum of \SI{5.3}{\W} and \SI{0.6}{\W} at pump power of \SI{68}{\W} with the \SI{172}{\mm} long fiber, respectively.
+As with the case of the aluminosilicate fiber, the \SI{976}{\nm} output power was recorded with a duration of \SI{60}{\minute}.
+The fluctuation of output was less than 1.5\% as shown in Fig.~\ref{fig:LongTermPowerStabilityOfCORACTIVE976YDFA}, which indicates that photo darkening is significantly reduced.
+
+
 \begin{figure}[h!]
   \centering
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/DCF-YB-20-128P-FAC172mm_SignalLongTermStability_915Pump70W976Seed0.24W_Exp.pdf}
-    %\subcaption{}
+    % \subcaption{}
+    % \label{fig:LongTermPowerStabilityOfCORACTIVE976YDFA}
   \end{minipage}
-  \caption{The output power of the \SI{976}{\nm} YDFA during \SI{60}{\minute}.}
-  \label{fig:LongTermStabilityOfCORACTIVE976YDFA}
+  \caption{The output power stability of the \SI{976}{\nm} YDFA during \SI{60}{\minute}.}
+  \label{fig:LongTermPowerStabilityOfCORACTIVE976YDFA}
 \end{figure}
+
 \subsection{1112\,nm YDFA}
 \begin{figure}[h]
   \begin{minipage}[b]{0.5\linewidth}
@@ -263,19 +270,22 @@ Plots of the amplified \SI{1112}{nm} and forward ASE as a function of pump power
 The maximum generation of \SI{1112}{\nm} is \SI{3.8}{\W} at applied pump power of \SI{7}{\W}, which corresponds to the gain of \SI{12.3}{\dB}.
 As shown in Fig.~\ref{fig:StabilityOf1112YDFA}, the variation of \SI{1112}{\nm} is less than 2.4\%.
 
-
 \section{Comparison between numerical simulations and experimental results} \label{sec:Discussion}
 \begin{figure}[h!]
-  \centering
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/1112nmYDFA2ndStageOutput_ComparisonBetweenSimAndExp.pdf}
+    %\subcaption{}
+  \end{minipage}\caption{Comparison between numerical simulation and experimental results of the \SI{976}{\nm} YDFA.}
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CompareSimAndExp_Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.pdf}
     %\subcaption{}
   \end{minipage}
-  \caption{Comparison between numerical simulation and experimental results of the \SI{976}{\nm} YDFA.}
-  \label{fig:ComparisonBetweenSimAndExpOf976YDFA}
+  \label{fig:ComparisonBetweenSimAndExpOfYDFA}
 \end{figure}
 
+We evaluated the experimental results by numerical simulations using \cref{eq:RateEquation,eq:PumpPropagationEquation,eq:SignalPropagationEquation,eq:ASEPropagationEquation} as the model.
 
 \section{Conclusion}
 

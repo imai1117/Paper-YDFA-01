@@ -33,9 +33,9 @@
 
 \begin{document}
 
-\title{Untitled}
+\title{Singlemode 1112\,nm and few-mode 976\,nm Yb-doped fiber amplifiers}
 
-\author{Yasutaka IMAI,\authormark{1, *}, Hideaki HARA,\authormark{1, *}}
+\author{Yasutaka IMAI\authormark{1, *}, Hideaki HARA\authormark{1}, Satoshi UETAKE\authormark{1}}
 
 \address{\authormark{1}Reserch Institute for Interdisciplinary Science, Okayama University, Okayama, Japan}
 
@@ -275,20 +275,49 @@ As shown in Fig.~\ref{fig:StabilityOf1112YDFA}, the variation of \SI{1112}{\nm} 
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/1112nmYDFA2ndStageOutput_ComparisonBetweenSimAndExp.pdf}
-    %\subcaption{}
+    \subcaption{}
+    \label{fig:ComparisonBetweenSimAndExpOf1112YDFA}
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CompareSimAndExp_Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.pdf}
-    %\subcaption{}
+    \subcaption{}
+    \label{fig:ComparisonBetweenSimAndExpOf976YDFA}
   \end{minipage}
   \caption{Comparison between numerical simulation and experimental results of the \SI{976}{\nm} YDFA.}
   \label{fig:ComparisonBetweenSimAndExpOfYDFA}
 \end{figure}
 
 We evaluated the experimental results by numerical simulations using \cref{eq:RateEquation,eq:PumpPropagationEquation,eq:SignalPropagationEquation,eq:ASEPropagationEquation} as the model.
+Simulation parameters are shown in \cref{tab:SimulationParameters}.
+\begin{table}[htbp]
+  \caption{Simulation parameters.}
+  \label{tab:SimulationParameters}
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    Parameter & 1112YDFA & 976YDFA \\
+    \hline \hline
+    Yb ion concentration $N$ & $7.3 \times 10^{25}/\si{m^{-3}}$ & $7.8 \times 10^{25}/\si{m^{-3}}$ \\
+    Core diameter & \SI{10}{\um} & \SI{20}{\um} \\
+    Cladding diameter & \SI{125}{\um} & \SI{125*}{\um} \\
+    Core numerical aperture & 0.08 & 0.08 \\
+    Pump wavelength $\lambda_{p}$ & \SI{976}{\nm} & \SI{915}{\nm} \\
+    Signal wavelength $\lambda_{s}$ & \SI{1112}{\nm} & \SI{976}{\nm} \\
+    ASE wavelength $\lambda_{a}$ & \SI{1000-1100}{\nm} & \SI{1000-1100}{\nm} \\
+  \end{tabular}
+\end{table}
+Comparison between the simulation results and experimental results of \SI{1112}{\nm} YDFA shown in Fig.~\ref{fig:ComparisonBetweenSimAndExpOf1112YDFA} indicates good consistency.
+The slightly larger experimental result in the forward ASE comparison is probably due to the ASE input at the second stage amplifier caused by residual forward ASE from the first stage amplifier, and re-injection of backward ASE resulting from reflection in upper stream of the \SI{1112}{\nm} system.
+Figure \cref{fig:ComparisonBetweenSimAndExpOf976YDFA} shows the result of comparison of \SI{976}{\nm} YDFA.
+While the simulated \SI{976}{\nm} output is overestimated relative to its experimental results, the ASE is conversely underestimated.
+This may be caused by the fact that the higher-order modes of the ASE were not taken into account in the simulations.
+Since the \SI{976}{\nm} seed light is mainly composed of a fundamental mode while the spontaneous emission includes all allowed higher-order modes.
+Therefore, the simulation without considering the higher-order modes resulted in large errors in the prediction of the ASE.
 
 \section{Conclusion}
+In this paper, we demonstrated the \SI{1112}{\nm} singlemode YDFA and \SI{976}{\nm} few-mode YDFA using only commercial fibers.
+By using the Yb-doped fiber with phosphosilicate glass, the power attenuation caused by photodarkening in the \SI{976}{\nm} amplifier which requires a high inversion distribution was suppressed to the same level as that of the \SI{1112}{\nm} amplifier.
 
 
 \begin{backmatter}

@@ -43,3 +43,8 @@ Temperature of the aluminum enclosure is controlled by peltier devices.
 Output of the second Yb-doped fiber is removed by CPS and collimated by pigtailed collimator.
 
 #######################
+
+Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population densities of the ground and excited state, respectively.
+$\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
+$\sigma_{e}, \sigma_{a}$ are the emission and absorption cross sections of Yb ions, and $\tau$ is the spontaneous lifetime of Yb ion in the excited state.
+Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.

@@ -48,3 +48,66 @@ Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population den
 $\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
 $\sigma_{e}, \sigma_{a}$ are the emission and absorption cross sections of Yb ions, and $\tau$ is the spontaneous lifetime of Yb ion in the excited state.
 Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.
+
+
+20220826シミュレーション式変更前
+\section{Yb-doped fiber amplifier}
+In developing fiber amplifiers, it is important to keep the undesired gain as low as possible.
+Gain at ASE wavelength can be written as a function of gains at two other wavelengths \cite{nilsson1998ringdoped}.
+In the cases of amplified signal at \SI{976}{nm} with \SI{915}{nm} pumping, and amplified signal \SI{1112}{nm} with \SI{976}{nm} pumping, gain of ASE which has center wavelength of \SI{1023}{nm} can be expressed using the cross section in Fig.~\ref{fig:EnergylevelAndCrosssectionOfYb3+} as follows
+\begin{align}
+  G_{1023} &= 0.29\cdot G_{976} + 0.96\cdot \beta A_{915} \label{Eq:976YDFAGain}\\
+  G_{1023} &= 6.5\cdot G_{1112} + 0.027\cdot \beta A_{976}, \label{Eq:1112YDFAGain}
+\end{align}
+where $G_{\lambda}$ is gain at wavelength $\lambda$, $A_{\lambda}$ is absorption of the pump at $\lambda$, and $\beta$ is the ratio of pump propagation area to effective modal field area of \SI{1023}{nm} ASE.
+For the \SI{976}{nm} YDFA, as shown in Eq.~\eqref{Eq:976YDFAGain}, a smaller value of $\beta$ is necessary to suppress the ASE gain.
+In our \SI{976}{nm} system, we use Yb-doped fiber with core and cladding diameters of \SI{20}{\um} and \SI{125}{\um}, respectively, which has a relatively small $\beta \simeq 61$ in commercially available Yb-doped LMA fibers.
+Without consideration of the gain at \SI{976}{nm}, the ASE gain increases $\sim \SI{59}{\dB}$ for each \SI{1}{\dB} of \SI{915}{nm} pump absorption.
+The above result indicates that it is important for \SI{976}{nm} YDFA to control \SI{915}{nm} pump absorption by using relative short Yb-doped fiber and to reduce input components to amplifier near ASE wavelength.
+On the other hand, for the \SI{1112}{nm} system, pump absorption has less contribution to the ASE gain $G_{1023}$.
+Therefore, we use Yb-doped LMA fiber with a core diameter of \SI{10}{\um} and a cladding diameter of \SI{125}{\um}, which has a more single-mode characteristic than that used for \SI{976}{nm} system.
+
+\begin{figure}[h!]
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/RelevantEnergyLevelOfYb3+InAluminosilicate}
+    %\subcaption{}
+  \end{minipage}
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CrossSectionOfYb3+InAluminosilicate}
+    %\subcaption{}
+  \end{minipage}
+  \caption{Relevant energy level and cross sections of Yb-doped fiber.}
+  \label{fig:EnergylevelAndCrosssectionOfYb3+}
+\end{figure}
+
+For more detailed estimation for YDFA, numerical simulations are required.
+We developed the simulation code based on the model in \cite{roeser200894}.
+The simulations for forward and backward propagating pump, signal, and ASE were conducted according to the rate equation given by
+\begin{equation}
+  \begin{split}
+    N &= N_{1} + N_{2}\\
+    \dv{N_{2}}{t} &= \frac{1}{A_{core}} (\sigma_{a}(\lambda_{p})N_{1} - \sigma_{e}(\lambda_{p})N_{2}) \frac{\lambda_{p}}{hc}\Gamma_{p} (P^{+}_{p} + P^{-}_{p})\\
+    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{s})N_{1} - \sigma_{e}(\lambda_{s})N_{2}) \frac{\lambda_{s}}{hc}\Gamma_{s} (P^{+}_{s} + P^{-}_{s})\\
+    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{a})N_{1} - \sigma_{e}(\lambda_{a})N_{2}) \frac{\lambda_{a}}{hc}\Gamma_{a} (P^{+}_{a} + P^{-}_{a}) - \frac{N_{2}}{\tau},
+  \end{split}
+  \label{eq:RateEquation}
+\end{equation} \todo{rewrite equations later}
+and propagation equations in fiber are described as
+\begin{align}
+  \dv{P^{\pm}_{p}}{z} &= \pm\Gamma_{p}P^{\pm}_{p}(\sigma_{e}(\lambda_{p})N_{2} - \sigma_{a}(\lambda_{p})N_{1}) \mp \alpha P^{\pm}_{p} \label{eq:PumpPropagationEquation}\\
+  \dv{P^{\pm}_{s}}{z} &= \pm\Gamma_{s}P^{\pm}_{s}(\sigma_{e}(\lambda_{s})N_{2} - \sigma_{a}(\lambda_{s})N_{1}) \mp \alpha P^{\pm}_{s} \label{eq:SignalPropagationEquation}\\
+  \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}. \label{eq:ASEPropagationEquation}
+\end{align}
+Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population densities of the ground and excited state, respectively.
+$\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
+$\sigma_{e}, \sigma_{a}$ are the emission and absorption cross sections of Yb ions, and $\tau$ is the spontaneous lifetime of Yb ion in the excited state.
+Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.
+
+#############
+\begin{align}
+  \Gamma_{p} &= \frac{A_{k}}{A_{\mathrm{clad}}}\\
+  \Gamma_{s} &= \\
+  \Gamma_{a, i} &= ,
+\end{align}

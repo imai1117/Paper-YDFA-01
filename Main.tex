@@ -28,6 +28,7 @@
 \usepackage{lipsum}
 \usepackage{bm, amsmath, comment, color, soul, cite, siunitx, physics}
 \usepackage{cleveref}
+\usepackage[super]{nth}
 \sisetup{parse-numbers = false}
 \linenumbers
 
@@ -101,28 +102,48 @@ Therefore, we use Yb-doped LMA fiber with a core diameter of \SI{10}{\um} and a 
   \label{fig:EnergylevelAndCrosssectionOfYb3+}
 \end{figure}
 
-For more detailed estimation for YDFA, numerical simulations are required.
-We developed the simulation code based on the model in \cite{roeser200894}.
-The simulations for forward and backward propagating pump, signal, and ASE were conducted according to the rate equation given by
+Further estimation for amplifiers requires numerical simulation.
+For the estimation of \SI{1112}{\nm}, only the $\mathrm{LP_{01}}$ mode should be considered as the propagation mode, while a several higher modes include in the calculation for the \SI{976}{\nm} amplifier because the few-mode fiber is used for the gain fiber.
+From the normalizded frequency $V_{c}$ of ASE, we included a few higher-order modes of $\mathrm{LP_{01}}$, $\mathrm{LP_{11}}$, $\mathrm{LP_{21}}$, and $\mathrm{LP_{02}}$ for ASE calculation, while only $\mathrm{LP_{01}}$ mode was considered for signal calculation because the seed laser almost consisted of $\mathrm{LP_{01}}$ mode.
+In addition, they are assumed that coupling between the $\mathrm{LP_{lm}}$ modes is negligible, and that Yb dopant are uniformly distributed throughout the fiber core.
+Referring to \cite{gong2007numerical}, we developed the simulation code based on a model which has the cross section of the doped core devided into $M$ layers in the radial direction.
+%The cross section of the doped core devided into $M$ layers in radial direction.
+The rate equation and propagation equations for forward and backward propagating pump, signal, and ASE were given by
 \begin{equation}
   \begin{split}
-    N &= N_{1} + N_{2}\\
-    \dv{N_{2}}{t} &= \frac{1}{A_{core}} (\sigma_{a}(\lambda_{p})N_{1} - \sigma_{e}(\lambda_{p})N_{2}) \frac{\lambda_{p}}{hc}\Gamma_{p} (P^{+}_{p} + P^{-}_{p})\\
-    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{s})N_{1} - \sigma_{e}(\lambda_{s})N_{2}) \frac{\lambda_{s}}{hc}\Gamma_{s} (P^{+}_{s} + P^{-}_{s})\\
-    &+ \frac{1}{A_{core}} (\sigma_{a}(\lambda_{a})N_{1} - \sigma_{e}(\lambda_{a})N_{2}) \frac{\lambda_{a}}{hc}\Gamma_{a} (P^{+}_{a} + P^{-}_{a}) - \frac{N_{2}}{\tau},
+    N_{1k} + N_{2k} &= 1\\
+    \dv{N_{2k}}{t} &= \frac{\lambda_{p} \Gamma_{p, k}}{hcA_{k}} (\sigma_{a}(\lambda_{p})N_{1k} - \sigma_{e}(\lambda_{p})N_{2k}) (P^{+}_{p} + P^{-}_{p})\\
+    &+ \frac{\lambda_{s} \Gamma_{s, k}}{hcA_{k}} (\sigma_{a}(\lambda_{s})N_{1k} - \sigma_{e}(\lambda_{s})N_{2k}) (P^{+}_{s} + P^{-}_{s})\\
+    &+ \frac{\lambda_{a} \Gamma_{a, k}}{hcA_{k}} (\sigma_{a}(\lambda_{a})N_{1k} - \sigma_{e}(\lambda_{a})N_{2k}) (P^{+}_{a} + P^{-}_{a}) - \frac{N_{2k}}{\tau},
   \end{split}
   \label{eq:RateEquation}
-\end{equation} \todo{rewrite equations later}
-and propagation equations in fiber are described as
+\end{equation}
+
 \begin{align}
-  \dv{P^{\pm}_{p}}{z} &= \pm\Gamma_{p}P^{\pm}_{p}(\sigma_{e}(\lambda_{p})N_{2} - \sigma_{a}(\lambda_{p})N_{1}) \mp \alpha P^{\pm}_{p} \label{eq:PumpPropagationEquation}\\
-  \dv{P^{\pm}_{s}}{z} &= \pm\Gamma_{s}P^{\pm}_{s}(\sigma_{e}(\lambda_{s})N_{2} - \sigma_{a}(\lambda_{s})N_{1}) \mp \alpha P^{\pm}_{s} \label{eq:SignalPropagationEquation}\\
-  \dv{P^{\pm}_{a}}{z} &= \pm\Gamma_{a}P^{\pm}_{a}(\sigma_{e}(\lambda_{a})N_{2} - \sigma_{a}(\lambda_{a})N_{1}) \mp \alpha P^{\pm}_{a} \pm 2\sigma_{e}(\lambda_{a})N_{2}\frac{hc^{2}}{\lambda_{a}^{3}}\Delta\lambda_{a}. \label{eq:ASEPropagationEquation}
+  \dv{P^{\pm}_{p}}{z} = &\pm \sum_{k}^{M} \Gamma_{p, k} (\sigma_{e}(\lambda_{p})N_{2k} - \sigma_{a}(\lambda_{p})N_{1k})NP^{\pm}_{p} \mp \alpha P^{\pm}_{p} \label{eq:PumpPropagationEquation}\\
+  \dv{P^{\pm}_{s}}{z} = &\pm \sum_{k}^{M} \Gamma_{s, k} (\sigma_{e}(\lambda_{s})N_{2k} - \sigma_{a}(\lambda_{s})N_{1k})NP^{\pm}_{s} \mp \alpha P^{\pm}_{s} \label{eq:SignalPropagationEquation}\\
+  \dv{P^{\pm}_{a, i}}{z} = &\pm \sum_{k}^{M} \Gamma_{a, k} (\sigma_{e}(\lambda_{a})N_{2k} - \sigma_{a}(\lambda_{a})N_{1k})NP^{\pm}_{a} \mp \alpha P^{\pm}_{a, i}\\
+  &\pm \sum_{k}^{M} m\sigma_{e}(\lambda_{a})\Gamma_{a, k, i} N_{2k}N \frac{hc^{2}}{\lambda_{a}^{3}} \Delta\lambda_{a}. \label{eq:ASEPropagationEquation}
 \end{align}
-Here $N$ is the Yb-ion concentration, $N_{1}$ and $N_{2}$ are the population densities of the ground and excited state, respectively.
-$\Gamma_{i} (i = p, s, a)$ is the overlapping factors for pump, signal, and ASE relative to the doped area, $A_{core}$ is the area of the doped area, $P^{\pm}_{i} (i = p, s, a)$ is the pump, signal, and ASE power, whose symbol $\pm$ corresponds to forward(+) and backward(-) propagation.
-$\sigma_{e}, \sigma_{a}$ are the emission and absorption cross sections of Yb ions, and $\tau$ is the spontaneous lifetime of Yb ion in the excited state.
+Here $P^{\pm}_{j} (j = p, s, a)$ is the pump, signal, and ASE power, whose symbol of $\pm$ indicates to forward(+) and backward(-) propagation.
+$\lambda_{j}$ is the wavelength of the pump, signal and ASE, $\sigma_{a}(\lambda_{j})$ and $\sigma_{e}(\lambda_{j})$ are the absorption and emission cross-sections of Yb ions at the wavelength $\lambda_{j}$, respectively.
+$A_{k} = \pi(r_{k+1}^2 - r_{k}^{2}), (k = 0, 1, \cdots M-1))$ is the $k^{\mathrm{th}}$ layer area of the doped core, $N$ is the Yb-ion dopant density, $N_{1k}$ and $N_{2k}$ are the population of the ground and excited states at the $k^{\mathrm{th}}$ layer, respectively.
+$\Gamma_{(p, s), k}$ is the overlapping factors for pump and signal, and $\Gamma_{a, k, i}$ is the overlapping factor of $i^{\mathrm{th}}$ transverse mode of the ASE relative to the $k^{\mathrm{th}}$ layer.
+$\tau$ is the spontaneous lifetime of Yb ion in the excited state, and $\alpha_{j}$ and $\alpha_{j, i}$ are loss factors during fiber propagation.
+$h$ is the plamck constant and $c$ is the speed of light in vacuum.
+
+In this experiment, we set the boundary conditions for the above equations as following:
+\begin{equation}
+  \begin{split}
+    P_{p, s}^{+}(0) &= P_{p, s} + R1P_{p, s}^{-}(0) \\
+    P_{p, s}^{-}(L) &= P_{p, s} + R2P_{p, s}^{+}(L) \\
+    P_{a, i}^{+}(0) &= R1P_{a, i}^{-}(0) \\
+    P_{a, i}^{-}(L) &= R2P_{a, i}^{+}(0), \\
+  \end{split}
+\end{equation}
+where $L$ is length of the doped fiber, and $R1$ and $R2$ are the equivalent reflectance at $z = 0$ and $z = L$ which includes reflections from outside the amplifier.
 Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.
+
 
 \section{Experimental setup}
 \subsection{976\,nm amplifier system}
@@ -132,10 +153,10 @@ Comparison of simulation and experimental results will be discussed in a later S
   \caption{\SI{976}{\nm} YDFA system.}
   \label{fig:976YDFASystem}
 \end{figure}
-
+\todo{add model name of components}
 A schematic of the \SI{976}{\nm} YDFA system is shown in Fig.~\ref{fig:976YDFASystem}.
 An external-cavity laser diode(ECLD) at \SI{976}{\nm} followed a tapered amplifier(TA) is used as a seed laser.
-The output of seed laser is pre-amplified by the TA up to nearly \SI{1}{\W}, and coupled to the YDFA input which is a polarization maintaining(PM) fiber with a FPC/AC connector.
+The output of seed laser is pre-amplified by the TA up to nearly \SI{1}{\W}, and coupled to the YDFA input which is a polarization maintaining(PM) fiber with a FC/APC connector.
 Owing to the spatial-mode mismatch of the output from TA, the power coupled to the input is only \SI{300}{\mW}.
 The input of YDFA is fusion-spliced to an inline isolator and a wavelength division multiplexing(WDM) filter, which protect the seed laser from backward propagation light generated in a gain fiber.
 The WDM which has three ports: a common port, a pass port, and a reflection port separates ASE around \SI{1020}{\nm} from signal path(common-pass) to the reflection port.
@@ -160,7 +181,7 @@ Amplified signal and ASE are collimated by pigtailed collimator, separated by a 
 A schematic of the \SI{1112}{\nm} YDFA system is shown in Fig.~\ref{fig:1112YDFASystem}.
 The \SI{1112}{\nm} YDFA system is composed of a seed laser and two amplifiers.
 A fiber laser at \SI{1112}{\nm}(Menlo systems Orange one-2) is used as the seed laser.
-The output singlemode fiber with a FPC/AC connector is contacted to the input singlemode fiber of the first stage amplifier with a mating sleeve.
+The output singlemode fiber with a FC/APC connector is contacted to the input singlemode fiber of the first stage amplifier with a mating sleeve.
 A coupled power into the input is about \SI{80}{\mW}.
 As pump lasers, a \SI{976}{\nm} fiber-coupled diode laser installed on an air-cooled heatsink with maximum output of \SI{7}{\W} is used for the first and second stage, respectively.
 The configuration of the first stage amplifier is similar to the \SI{976}{\nm} system except fiber type.
@@ -280,7 +301,7 @@ As shown in Fig.~\ref{fig:StabilityOf1112YDFA}, the variation of \SI{1112}{\nm} 
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/CompareSimAndExp_Yb1200-20-125DC-PM438mm_915Pump976Seed0.24W.pdf}
+    \includegraphics[keepaspectratio, width=0.9\linewidth]{./Figure/976nmYDFAOutput_ComparisonBetweenSimAndExp.pdf}
     \subcaption{}
     \label{fig:ComparisonBetweenSimAndExpOf976YDFA}
   \end{minipage}
@@ -298,13 +319,15 @@ Simulation parameters are shown in \cref{tab:SimulationParameters}.
     \hline
     Parameter & 1112YDFA & 976YDFA \\
     \hline \hline
-    Yb ion concentration $N$ & $7.3 \times 10^{25}/\si{m^{-3}}$ & $7.8 \times 10^{25}/\si{m^{-3}}$ \\
-    Core diameter & \SI{10}{\um} & \SI{20}{\um} \\
-    Cladding diameter & \SI{125}{\um} & \SI{125*}{\um} \\
-    Core numerical aperture & 0.08 & 0.08 \\
+    Yb ion concentration $N$ & $7.3 \times 10^{25}/\si{m^{-3}}$ & $43 \times 10^{25}/\si{m^{-3}}$ \\
+    Core diameter & \SI{10}{\um} & \SI{19.8}{\um} \\
+    Cladding diameter & \SI{125}{\um} & \SI{128*}{\um} \\
+    Core numerical aperture & 0.076 & 0.086 \\
     Pump wavelength $\lambda_{p}$ & \SI{976}{\nm} & \SI{915}{\nm} \\
     Signal wavelength $\lambda_{s}$ & \SI{1112}{\nm} & \SI{976}{\nm} \\
     ASE wavelength $\lambda_{a}$ & \SI{1000-1100}{\nm} & \SI{1000-1100}{\nm} \\
+    R1 & $10^{-6}$ & $10^{-6}$ \\
+    R2 & $10^{-6}$ & $10^{-6}$ \\
   \end{tabular}
 \end{table}
 Comparison between the simulation results and experimental results of \SI{1112}{\nm} YDFA shown in Fig.~\ref{fig:ComparisonBetweenSimAndExpOf1112YDFA} indicates good consistency.

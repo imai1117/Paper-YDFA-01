@@ -27,7 +27,7 @@
 \usepackage{layout}
 \usepackage{lipsum}
 \usepackage{bm, amsmath, comment, color, soul, cite, siunitx, physics}
-\usepackage{cleveref}
+\usepackage[capitalize]{cleveref}
 \usepackage[super]{nth}
 \sisetup{parse-numbers = false}
 \linenumbers
@@ -122,7 +122,7 @@ The rate equation and propagation equations for forward and backward propagating
 \begin{align}
   \dv{P^{\pm}_{p}}{z} = &\pm \sum_{k}^{M} \Gamma_{p, k} (\sigma_{e}(\lambda_{p})N_{2k} - \sigma_{a}(\lambda_{p})N_{1k})NP^{\pm}_{p} \mp \alpha P^{\pm}_{p} \label{eq:PumpPropagationEquation}\\
   \dv{P^{\pm}_{s}}{z} = &\pm \sum_{k}^{M} \Gamma_{s, k} (\sigma_{e}(\lambda_{s})N_{2k} - \sigma_{a}(\lambda_{s})N_{1k})NP^{\pm}_{s} \mp \alpha P^{\pm}_{s} \label{eq:SignalPropagationEquation}\\
-  \dv{P^{\pm}_{a, i}}{z} = &\pm \sum_{k}^{M} \Gamma_{a, k} (\sigma_{e}(\lambda_{a})N_{2k} - \sigma_{a}(\lambda_{a})N_{1k})NP^{\pm}_{a} \mp \alpha P^{\pm}_{a, i}\\
+  \dv{P^{\pm}_{a, i}}{z} = &\pm \sum_{k}^{M} \Gamma_{a, k} (\sigma_{e}(\lambda_{a})N_{2k} - \sigma_{a}(\lambda_{a})N_{1k})NP^{\pm}_{a} \mp \alpha P^{\pm}_{a, i} \nonumber \\
   &\pm \sum_{k}^{M} m\sigma_{e}(\lambda_{a})\Gamma_{a, k, i} N_{2k}N \frac{hc^{2}}{\lambda_{a}^{3}} \Delta\lambda_{a}. \label{eq:ASEPropagationEquation}
 \end{align}
 Here $P^{\pm}_{j} (j = p, s, a)$ is the pump, signal, and ASE power, whose symbol of $\pm$ indicates to forward(+) and backward(-) propagation.
@@ -142,6 +142,10 @@ In this experiment, we set the boundary conditions for the above equations as fo
   \end{split}
 \end{equation}
 where $L$ is length of the doped fiber, and $R1$ and $R2$ are the equivalent reflectance at $z = 0$ and $z = L$ which includes reflections from outside the amplifier.
+The simulation sequence is as follows:
+(1) Using initial conditions and \cref{eq:RateEquation,eq:PumpPropagationEquation,eq:SignalPropagationEquation,eq:ASEPropagationEquation}, the evolution of the forward propagating pump, signal, and ASE powers from $z = 0$ to $z = L$ are calculated;
+(2) The initial condition for backward propagation is derived from the each forward-propagation output at $z = L$, and the evolution of backward propagation is calculated in the reverse direction of the procedure (1);
+(3) Then we repeat the steps (1) and (2) until the each forward propagation at $z = L$ and the backward propagation at $z = 0$ are converged.
 Comparison of simulation and experimental results will be discussed in a later Section \ref{sec:Discussion}.
 
 
